@@ -30,6 +30,14 @@ document.addEventListener("DOMContentLoaded", () => {
   addMeta("description", "Welcome to Braxon's Stuff!");
 
   // Theme color
-  addMeta("theme-color", "#ff000", "name");
+  addMeta("theme-color", "#ff000");
+
+  // Favicon (add only if missing)
+  if (!document.querySelector('link[rel~="icon"]')) {
+    const icon = document.createElement("link");
+    icon.rel = "icon";
+    icon.href = "/img/BKIcon.png";
+    document.head.appendChild(icon);
+  }
 
 });
