@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
   /* -------------------- Meta Tags -------------------- */
   addMeta("viewport", "width=device-width, initial-scale=1.0");
   addMeta("description", "Welcome to Braxon's Stuff!");
-  addMeta("theme-color", "#0000ff");
+  addMeta("theme-color", "#ffffff");
 
   /* -------------------- Auto Footer (inside .main) -------------------- */
   if (main && !main.querySelector("footer")) {
