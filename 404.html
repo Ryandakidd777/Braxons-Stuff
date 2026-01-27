@@ -6,31 +6,31 @@
   <link rel="icon" href="https://file.garden/ZTBRM8DJt13euhmD/BKIcon.png">
   <script src="/js/mainGlobal.js" defer></script>
   <style>
-    body {
-      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
-                   'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-      text-align: center;
-      justify-content: center;
-    }
-    h1 {
-      font-size: 25px;
-      padding-top: 10px;
-    }
-    p {
-      font-size: 15px;
-    }
-    #smol {
-      font-size: 9px;
-      opacity: 0.5;
-    }
+        .main {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+        .main #header {
+            font-size: 25px;
+            text-align: center;
+            padding-top: 10px;
+        }
+        .main #header #description {
+            font-size: 15px;
+            text-align: center;
+        }
   </style>
 </head>
 <body>
-  <div>
-    <h1>404 - Page not found</h1>
-    <p>Welp... you seem to have found a page that doesn't exist.</p>
-    <p id="smol"></p>
-    <a href="https://braxonsstuff.com">Go home</a>
+  <div class="main">
+    <div id="header">
+      <h1>404 - Page not found</h1>
+      <p>Welp... you seem to have found a page that doesn't exist.</p>
+      <div id="description">
+        <p id="smol"></p>
+        <a href="https://braxonsstuff.com">Go home</a>
+      </div><!--desc-->
+    </div>
+
   </div>
   <script>
     const messages = [
@@ -39,7 +39,10 @@
       "wrong turn buddy",
       "you weren't supposed to see this",
       "task failed successfully",
-      "Welp... you seem to have found a page that doesn't exist."
+      "*insert trombone sound here*",
+      "well, would you look at that",
+      "ruh roh",
+      "look! a nonexistant page!"
     ];
     const smolText = document.getElementById("smol");
     const randomIndex = Math.floor(Math.random() * messages.length);
