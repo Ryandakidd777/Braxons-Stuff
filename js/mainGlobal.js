@@ -1,11 +1,18 @@
 // /js/mainGlobal.js
-
 document.addEventListener("DOMContentLoaded", () => {
-
   /* -------------------- Page & Main Layout -------------------- */
   document.documentElement.style.height = "100%";
   document.body.style.minHeight = "100vh";
   document.body.style.margin = "0";
+
+  /* -------------------- Auto Favicon -------------------- */
+  if (!document.querySelector('link[rel="icon"], link[rel="shortcut icon"]')) {
+    const favicon = document.createElement("link");
+    favicon.rel = "icon";
+    favicon.type = "image/png";
+    favicon.href = "/img/Braxon'sStuffLogo-256x256.png";
+    document.head.appendChild(favicon);
+  }
 
   const main = document.querySelector(".main");
   if (main) {
@@ -14,13 +21,11 @@ document.addEventListener("DOMContentLoaded", () => {
     main.style.display = "flex";
     main.style.flexDirection = "column";
   }
-
   /* -------------------- Title -------------------- */
   const suffix = " | Braxon's Stuff";
   if (!document.title.endsWith(suffix)) {
     document.title += suffix;
   }
-
   /* -------------------- Meta Helper -------------------- */
   function addMeta(name, content, attr = "name") {
     if (!document.querySelector(`meta[${attr}="${name}"]`)) {
@@ -30,7 +35,6 @@ document.addEventListener("DOMContentLoaded", () => {
       document.head.appendChild(meta);
     }
   }
-
   /* -------------------- Meta Tags -------------------- */
   addMeta("viewport", "width=device-width, initial-scale=1.0");
   addMeta("description", "Welcome to Braxon's Stuff!");
@@ -54,5 +58,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
     main.appendChild(footer);
   }
-
 });
