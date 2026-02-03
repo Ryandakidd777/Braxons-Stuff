@@ -1,11 +1,21 @@
 // /js/mainGlobal.js
 document.addEventListener("DOMContentLoaded", () => {
-  /* -------------------- Page & Main Layout -------------------- */
+
+  /*Base Page Setup*/
+
   document.documentElement.style.height = "100%";
-  document.body.style.minHeight = "100vh";
   document.body.style.margin = "0";
 
-  /* -------------------- Auto Favicon -------------------- */
+  const main = document.querySelector(".main");
+  if (!main) return;
+
+  main.style.minHeight = "100vh";
+  main.style.display = "flex";
+  main.style.flexDirection = "column";
+
+
+  /*Auto Favicon*/
+
   if (!document.querySelector('link[rel="icon"], link[rel="shortcut icon"]')) {
     const favicon = document.createElement("link");
     favicon.rel = "icon";
@@ -14,48 +24,76 @@ document.addEventListener("DOMContentLoaded", () => {
     document.head.appendChild(favicon);
   }
 
-  const main = document.querySelector(".main");
-  if (main) {
-    // Make .main control layout instead of body
-    main.style.minHeight = "100vh";
-    main.style.display = "flex";
-    main.style.flexDirection = "column";
-  }
-  /* -------------------- Title -------------------- */
+
+  /*Title Handling*/
+
   const suffix = " | Braxon's Stuff";
   if (!document.title.endsWith(suffix)) {
     document.title += suffix;
   }
-  /* -------------------- Meta Helper -------------------- */
+
+
+  /*Meta Helper*/
+
   function addMeta(name, content, attr = "name") {
-    if (!document.querySelector(`meta[${attr}="${name}"]`)) {
-      const meta = document.createElement("meta");
+    let meta = document.querySelector(`meta[${attr}="${name}"]`);
+    if (!meta) {
+      meta = document.createElement("meta");
       meta.setAttribute(attr, name);
-      meta.content = content;
       document.head.appendChild(meta);
     }
+    meta.content = content;
   }
-  /* -------------------- Meta Tags -------------------- */
+
   addMeta("viewport", "width=device-width, initial-scale=1.0");
   addMeta("description", "Welcome to Braxon's Stuff!");
-  addMeta("theme-color", "#ffffff");
 
-  /* -------------------- Auto Footer (inside .main) -------------------- */
-  if (main && !main.querySelector("footer")) {
+
+/*Theme Controller (FORCED + LIVE) */
+
+const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+
+function applySystemTheme() {
+  const theme = mediaQuery.matches ? "dark" : "light";
+
+  document.documentElement.setAttribute("data-theme", theme);
+
+  // Update browser UI color
+  let meta = document.querySelector('meta[name="theme-color"]');
+  if (!meta) {
+    meta = document.createElement("meta");
+    meta.name = "theme-color";
+    document.head.appendChild(meta);
+  }
+
+  meta.content = theme === "dark" ? "#0f0f0f" : "#ffffff";
+}
+
+// FORCE reset on load
+applySystemTheme();
+
+// LIVE update when OS theme changes
+mediaQuery.addEventListener("change", applySystemTheme);
+//end
+
+/*Global Header Loader (INSIDE .main)*/
+  fetch("/components/header.html")
+    .then(res => res.text())
+    .then(html => {
+      main.insertAdjacentHTML("afterbegin", html);
+    })
+    .catch(err => console.error("Failed to load header:", err));
+
+
+  /* Auto Footer (inside .main)*/
+  if (!main.querySelector("footer")) {
     const footer = document.createElement("footer");
     const year = new Date().getFullYear();
 
     footer.textContent = `© ${year} Braxon's Stuff. All rights reserved.`;
-
-    footer.style.marginTop = "auto"; // push to bottom of .main
-    footer.style.padding = "1px";
-    footer.style.textAlign = "center";
-    footer.style.fontSize = "13px";
-    footer.style.opacity = "0.7";
-
-    // Lift slightly without affecting layout height
-    footer.style.transform = "translateY(-15px)";
+    footer.style.marginTop = "auto";
 
     main.appendChild(footer);
   }
+
 });
