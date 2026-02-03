@@ -1,3 +1,75 @@
+/* Theme System (Light / Dark)*/
+
+/* Default fallback (light) */
+html {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+/* -------------------- Light Theme -------------------- */
+html[data-theme="light"] {
+    --bg-color: #ffffff;
+    --text-color: #000000;
+    --border-color: #dddddd;
+    --header-bg: #ffffff;
+}
+
+/* -------------------- Dark Theme -------------------- */
+html[data-theme="dark"] {
+    --bg-color: #0f0f0f;
+    --text-color: #eaeaea;
+    --border-color: #2a2a2a;
+    --header-bg: #151515;
+}
+
+/* Apply theme variables */
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+/* -------------------- Global Header -------------------- */
+.global-header {
+    position: sticky;
+    top: 0;
+    background: var(--header-bg);
+    border-bottom: 1px solid var(--border-color);
+    z-index: 1000;
+}
+
+.header-inner {
+    max-width: 1100px;
+    margin: auto;
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.header-logo img {
+    width: 28px;
+    height: 28px;
+}
+
+.header-nav a {
+    margin-left: 16px;
+    font-size: 15px;
+    opacity: 0.9;
+}
+
+.header-nav a:hover {
+    text-decoration: underline;
+}
+/**/
+
 .main {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
