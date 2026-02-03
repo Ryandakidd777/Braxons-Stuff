@@ -1,3 +1,4 @@
+//words --delete me next update
 // /js/mainGlobal.js
 document.addEventListener("DOMContentLoaded", () => {
 
