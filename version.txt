@@ -2,4 +2,4 @@ Version:Alpha
 Created:January/24/2026 EST
 Last Updated:January/25/2026 EST
 
-Updated-index.html, AboutMe/index.html, js/mainGlobal.js
+Updated-mainGlobal.js, index.html, AboutMe/index.html, 404.html, Added new images,
