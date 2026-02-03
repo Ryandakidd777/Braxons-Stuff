@@ -27,20 +27,34 @@ document.addEventListener("DOMContentLoaded", () => {
     document.title += suffix;
   }
 
-  /* -------------------- Meta Helper -------------------- */
-  function addMeta(name, content, attr = "name") {
-    let meta = document.querySelector(`meta[${attr}="${name}"]`);
-    if (!meta) {
-      meta = document.createElement("meta");
-      meta.setAttribute(attr, name);
-      document.head.appendChild(meta);
-    }
-    meta.content = content;
+/* -------------------- Meta Helper -------------------- */
+function addMeta(attr, name, content) {
+  let meta = document.querySelector(`meta[${attr}="${name}"]`);
+  if (!meta) {
+    meta = document.createElement("meta");
+    meta.setAttribute(attr, name);
+    document.head.appendChild(meta);
   }
+  meta.content = content;
+}
 
-  addMeta("viewport", "width=device-width, initial-scale=1.0");
-  addMeta("description", "Welcome to Braxon's Stuff!");
-  addMeta("theme-color", "#ffffff");
+  /* -------------------- Standard Meta -------------------- */
+  addMeta("name", "viewport", "width=device-width, initial-scale=1.0");
+  addMeta("name", "description", "Welcome to Braxon's Stuff! A hub for projects, ideas, and fun stuff by Braxon.");
+  addMeta("name", "theme-color", document.documentElement.dataset.theme === "dark" ? "#0f0f0f" : "#ffffff");
+
+  /* -------------------- Open Graph Meta -------------------- */
+  addMeta("property", "og:title", "Braxon's Stuff");
+  addMeta("property", "og:description", "Welcome to Braxon's Stuff! A hub for projects, ideas, and fun stuff by Braxon.");
+  addMeta("property", "og:type", "website");
+  addMeta("property", "og:url", "https://braxonsstuff.com/");
+  addMeta("property", "og:image", "https://braxonsstuff.com/img/Braxon'sStuffLogo-256x256.png");
+
+  /* -------------------- Twitter Card Meta -------------------- */
+  addMeta("name", "twitter:card", "summary_large_image");
+  addMeta("name", "twitter:title", "Braxon's Stuff");
+  addMeta("name", "twitter:description", "Welcome to Braxon's Stuff! A hub for projects, ideas, and fun stuff by Braxon.");
+  addMeta("name", "twitter:image", "https://braxonsstuff.com/img/Braxon'sStuffLogo-256x256.png");
 
   /* -------------------- Theme Controller (Live + Forced) -------------------- */
   const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
