@@ -1,3 +1,4 @@
+/* # id . class* /
 /*Wordsss*/
 /* Theme System (Light / Dark)*/
 
@@ -31,46 +32,71 @@ body {
 
 /* -------------------- Global Header -------------------- */
 .global-header {
-    position: sticky;
-    top: 0;
-    background: var(--header-bg);
-    border-bottom: 1px solid var(--border-color);
-    z-index: 1000;
+  position: sticky;
+  top: 0;
+  background: var(--header-bg);
+  border-bottom: 1px solid var(--border-color);
+  z-index: 1000;
 }
 
 .header-inner {
-    max-width: 1100px;
-    margin: auto;
-    padding: 10px 16px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  max-width: 1100px;
+  margin: auto;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
+/* Logo */
 .header-logo {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 18px;
-    font-weight: bold;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
 }
 
 .header-logo img {
-    width: 28px;
-    height: 28px;
+  width: 28px;
+  height: 28px;
 }
 
-.header-nav a {
-    margin-left: 16px;
-    font-size: 15px;
-    opacity: 0.9;
+/* Navigation */
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }
 
-.header-nav a:hover {
-    text-decoration: underline;
+.header-nav .nav-link {
+  font-size: 15px;
+  opacity: 0.9;
+  text-decoration: none;
+}
+
+.header-nav .nav-link:hover {
+  text-decoration: underline;
+}
+
+/* Icon buttons (GitHub, future theme toggle, etc.) */
+.nav-icon {
+  display: inline-flex;
+  align-items: center;
+  opacity: 0.9;
+}
+
+.nav-icon img {
+  width: 20px;
+  height: 20px;
+}
+
+.nav-icon:hover {
+  opacity: 1;
+  transform: scale(1.05);
 }
 /**/
-
 .main {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
@@ -79,6 +105,8 @@ body {
     font-size: 38px;
     text-align: center;
     padding-top: 10px;
+    padding-left: 300px;
+    padding-right: 300px;
 }
 
 .main #page-title #description {
@@ -114,6 +142,7 @@ footer {
     opacity: 0.7;
 }
 
+/*icon link (def) */
 .icon-link {
     display: inline-flex;
     align-items: center;
@@ -123,4 +152,20 @@ footer {
 .icon-link img {
     width: 16px;
     height: 16px;
+}
+
+/* something with mobile idk */
+@media (max-width: 600px) {
+    .icon-link {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 8px;
+    }
+
+    .icon-link img {
+        width: 48px;
+        height: 48px;
+        display: block;
+    }
 }
