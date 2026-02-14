@@ -95,21 +95,22 @@ body {
   opacity: 1;
   transform: scale(1.05);
 }
-/**/
+
+/* Main content */
 .main {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 .main #page-title {
-    font-size: 38px;
+    font-size: clamp(24px, 5vw, 38px); /* responsive font size */
     text-align: center;
     padding-top: 10px;
-    padding-left: 150px;
-    padding-right: 150px;
+    padding-left: 20px;   /* dynamic horizontal padding */
+    padding-right: 20px;  /* dynamic horizontal padding */
 }
 
 .main #page-title #description {
-    font-size: 18px;
+    font-size: clamp(14px, 2.5vw, 18px); /* responsive description */
     text-align: center;
 }
 
@@ -141,7 +142,7 @@ footer {
     opacity: 0.7;
 }
 
-/*icon link (def) */
+/* Icon link */
 .icon-link {
     display: inline-flex;
     align-items: center;
@@ -153,7 +154,7 @@ footer {
     height: 16px;
 }
 
-/* something with mobile idk */
+/* Mobile adjustments */
 @media (max-width: 600px) {
     .icon-link {
         flex-direction: column;
