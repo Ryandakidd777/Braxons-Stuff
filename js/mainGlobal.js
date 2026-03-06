@@ -116,6 +116,41 @@ function addMeta(attr, name, content) {
     main.appendChild(footer);
   }
   
+  /* -------------------- Missing Image Handler -------------------- */
+  const PLACEHOLDER_IMG = "/img/misc/Placeholder.png";
+
+  function handleImageError(img) {
+    if (img.dataset.fallbackApplied) return; // Prevent loops
+
+    console.warn(`Missing image detected: ${img.src}`);
+    img.dataset.fallbackApplied = "true";
+    img.src = PLACEHOLDER_IMG;
+  }
+
+  // Attach to existing images
+  document.querySelectorAll("img").forEach(img => {
+    img.addEventListener("error", () => handleImageError(img));
+  });
+
+  // Watch for dynamically added images
+  const imgObserver = new MutationObserver(mutations => {
+    mutations.forEach(mutation => {
+      mutation.addedNodes.forEach(node => {
+        if (node.tagName === "IMG") {
+          node.addEventListener("error", () => handleImageError(node));
+        }
+
+        if (node.querySelectorAll) {
+          node.querySelectorAll("img").forEach(img => {
+            img.addEventListener("error", () => handleImageError(img));
+          });
+        }
+      });
+    });
+  });
+
+  imgObserver.observe(document.body, { childList: true, subtree: true });
+
 /* Console Thingie */
 (function() {
   const text = "BRAXON'S STUFF";
