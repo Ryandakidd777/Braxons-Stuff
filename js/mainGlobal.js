@@ -27,78 +27,140 @@ document.addEventListener("DOMContentLoaded", () => {
     document.title += suffix;
   }
 
-/* -------------------- Meta Helper -------------------- */
-function addMeta(attr, name, content) {
-  let meta = document.querySelector(`meta[${attr}="${name}"]`);
-  if (!meta) {
-    meta = document.createElement("meta");
-    meta.setAttribute(attr, name);
-    document.head.appendChild(meta);
+  /* -------------------- Meta Helper -------------------- */
+  function addMeta(attr, name, content) {
+    let meta = document.querySelector(`meta[${attr}="${name}"]`);
+    if (!meta) {
+      meta = document.createElement("meta");
+      meta.setAttribute(attr, name);
+      document.head.appendChild(meta);
+    }
+    meta.content = content;
   }
-  meta.content = content;
-}
+
   /* -------------------- Standard Meta -------------------- */
   addMeta("name", "viewport", "width=device-width, initial-scale=1.0");
   addMeta("name", "description", "Welcome to Braxon's Stuff! It's some stuff, by Braxon.");
-  addMeta("name", "theme-color", document.documentElement.dataset.theme === "dark" ? "#0f0f0f" : "#ffffff");
+  addMeta("name", "theme-color", "#ffffff");
 
-  /* -------------------- Open Graph Meta -------------------- */
-  addMeta("property", "og:title", "Braxon's Stuff");
-  addMeta("property", "og:description", "Welcome to Braxon's Stuff! It's some stuff, by Braxon.");
-  addMeta("property", "og:type", "website");
-  addMeta("property", "og:url", "https://braxonsstuff.com/");
-  addMeta("property", "og:image", "https://braxonsstuff.com/img/Braxon'sStuffLogo-128x128.png");
+  /* -------------------- Theme Controller -------------------- */
 
-  /* -------------------- Twitter Card Meta -------------------- */
-  addMeta("name", "twitter:card", "summary_large_image");
-  addMeta("name", "twitter:title", "Braxon's Stuff");
-  addMeta("name", "twitter:description", "Welcome to Braxon's Stuff! It's some stuff, by Braxon.");
-  addMeta("name", "twitter:image", "https://braxonsstuff.com/img/Braxon'sStuffLogo-128x128.png");
-
-  /* -------------------- Theme Controller (Live + Forced) -------------------- */
   const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+  const THEME_KEY = "braxon-theme";
 
-  function applySystemTheme() {
-    const theme = mediaQuery.matches ? "dark" : "light";
-    document.documentElement.setAttribute("data-theme", theme);
-
-    const metaTheme = document.querySelector('meta[name="theme-color"]');
-    if (metaTheme) {
-      metaTheme.content = theme === "dark" ? "#0f0f0f" : "#ffffff";
-    }
+  function getSavedTheme() {
+    return localStorage.getItem(THEME_KEY) || "system";
   }
 
-  applySystemTheme();
-  mediaQuery.addEventListener("change", applySystemTheme);
+  function setMetaThemeColor() {
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    if (!metaTheme) return;
+
+    const dark = document.documentElement.dataset.theme === "dark";
+    metaTheme.content = dark ? "#0f0f0f" : "#ffffff";
+  }
+
+  function applyTheme(theme) {
+
+    if (theme === "system") {
+      document.documentElement.dataset.theme =
+        mediaQuery.matches ? "dark" : "light";
+    } else {
+      document.documentElement.dataset.theme = theme;
+    }
+
+    setMetaThemeColor();
+  }
+
+  applyTheme(getSavedTheme());
+
+  mediaQuery.addEventListener("change", () => {
+    if (getSavedTheme() === "system") {
+      applyTheme("system");
+    }
+  });
 
   /* -------------------- Global Header Loader -------------------- */
+
   fetch("/components/header.html")
     .then(res => res.text())
     .then(html => {
+
       main.insertAdjacentHTML("afterbegin", html);
 
-      // After header is inserted, initialize GitHub icon theme switch
       initGitHubIcon();
+      initThemeToggle();
+
     })
     .catch(err => console.error("Failed to load header:", err));
 
-  /* -------------------- GitHub Icon Dark Mode Handling -------------------- */
+  /* -------------------- Theme Toggle -------------------- */
+
+  function initThemeToggle() {
+
+    const toggleBtn = document.getElementById("theme-toggle");
+    const toggleIcon = document.getElementById("theme-toggle-icon");
+
+    function updateIcon(theme) {
+
+      if (!toggleIcon) return;
+
+      if (theme === "dark")
+        toggleIcon.src = "/img/LightDarkIcons/DarkToggle.png";
+
+      else if (theme === "light")
+        toggleIcon.src = "/img/LightDarkIcons/LightToggle.png";
+
+      else
+        toggleIcon.src = "/img/LightDarkIcons/DefaultToggle.png";
+    }
+
+    function cycleTheme() {
+
+      const current = getSavedTheme();
+
+      let next;
+
+      if (current === "system") next = "dark";
+      else if (current === "dark") next = "light";
+      else next = "system";
+
+      localStorage.setItem(THEME_KEY, next);
+
+      applyTheme(next);
+      updateIcon(next);
+    }
+
+    const saved = getSavedTheme();
+    updateIcon(saved);
+
+    toggleBtn?.addEventListener("click", cycleTheme);
+  }
+
+  /* -------------------- GitHub Icon Theme Handling -------------------- */
+
   function initGitHubIcon() {
+
     const icon = document.getElementById("github-icon");
     if (!icon) return;
 
     function updateIcon() {
-      const isDark = document.documentElement.dataset.theme === "dark" ||
-                     mediaQuery.matches;
-      icon.src = isDark ? "/img/GitHubLogos/GitHubLogo-White.png" : "/img/GitHubLogos/GitHubLogo.png";
+
+      const isDark = document.documentElement.dataset.theme === "dark";
+
+      icon.src = isDark
+        ? "/img/GitHubLogos/GitHubLogo-White.png"
+        : "/img/GitHubLogos/GitHubLogo.png";
     }
 
     updateIcon();
 
-    mediaQuery.addEventListener("change", updateIcon);
-
     const observer = new MutationObserver(updateIcon);
-    observer.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["data-theme"]
+    });
   }
 
   /* -------------------- Auto Footer -------------------- */
@@ -115,89 +177,5 @@ function addMeta(attr, name, content) {
 
     main.appendChild(footer);
   }
-  
-  /* -------------------- Missing Image Handler -------------------- */
-  const PLACEHOLDER_IMG = "/img/misc/Placeholder.png";
-
-  function handleImageError(img) {
-    if (img.dataset.fallbackApplied) return; // Prevent loops
-
-    console.warn(`Missing image detected: ${img.src}`);
-    img.dataset.fallbackApplied = "true";
-    img.src = PLACEHOLDER_IMG;
-  }
-
-  // Attach to existing images
-  document.querySelectorAll("img").forEach(img => {
-    img.addEventListener("error", () => handleImageError(img));
-  });
-
-  // Watch for dynamically added images
-  const imgObserver = new MutationObserver(mutations => {
-    mutations.forEach(mutation => {
-      mutation.addedNodes.forEach(node => {
-        if (node.tagName === "IMG") {
-          node.addEventListener("error", () => handleImageError(node));
-        }
-
-        if (node.querySelectorAll) {
-          node.querySelectorAll("img").forEach(img => {
-            img.addEventListener("error", () => handleImageError(img));
-          });
-        }
-      });
-    });
-  });
-
-  imgObserver.observe(document.body, { childList: true, subtree: true });
-
-/* Console Thingie */
-(function() {
-  const text = "BRAXON'S STUFF";
-  const colors = ["#ff4b5c","#56cfe1","#ffbd69","#6a4c93","#4caf50","#f72585","#ffa500","#00ffff","#ff00ff","#ffff00"];
-  const bgColors = ["#000","#111","#222","#333","#444","#555","#666"];
-  const outputParts = [];
-  const styleArgs = [];
-
-  const decorations = ["underline","line-through","overline","none"];
-  const transforms = ["rotate","skewX","skewY","translateY"];
-
-  for (let i = 0; i < text.length; i++) {
-    const color = colors[Math.floor(Math.random()*colors.length)];
-    const bg = Math.random() < 0.3 ? bgColors[Math.floor(Math.random()*bgColors.length)] : "transparent";
-    const bold = Math.random() < 0.5 ? "font-weight: bold;" : "";
-    const italic = Math.random() < 0.4 ? "font-style: italic;" : "";
-    const decoration = `text-decoration: ${decorations[Math.floor(Math.random()*decorations.length)]};`;
-    const size = `${14 + Math.floor(Math.random()*24)}px`;
-    const letterSpacing = Math.random() < 0.5 ? `${Math.floor(Math.random()*5)}px` : "0px";
-    const shadow = Math.random() < 0.5 ? `${Math.floor(Math.random()*4-2)}px ${Math.floor(Math.random()*4-2)}px ${Math.floor(Math.random()*6)}px ${colors[Math.floor(Math.random()*colors.length)]}` : "none";
-    
-    let transform = "";
-    if (Math.random() < 0.6) {
-      const choice = transforms[Math.floor(Math.random()*transforms.length)];
-      if(choice === "rotate") transform = `transform: rotate(${Math.floor(Math.random()*60-30)}deg); display:inline-block;`;
-      if(choice === "skewX") transform = `transform: skewX(${Math.floor(Math.random()*30-15)}deg); display:inline-block;`;
-      if(choice === "skewY") transform = `transform: skewY(${Math.floor(Math.random()*30-15)}deg); display:inline-block;`;
-      if(choice === "translateY") transform = `transform: translateY(${Math.floor(Math.random()*10-5)}px); display:inline-block;`;
-    }
-
-    const style = `
-      color: ${color};
-      background: ${bg};
-      font-size: ${size};
-      font-weight: ${bold};
-      font-style: ${italic};
-      letter-spacing: ${letterSpacing};
-      text-shadow: ${shadow};
-      ${decoration}
-      ${transform}
-    `;
-
-    outputParts.push("%c" + text[i]);
-    styleArgs.push(style);
-  }
-
-  console.log(outputParts.join(""), ...styleArgs);
-})();
 
 });
