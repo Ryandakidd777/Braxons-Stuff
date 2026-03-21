@@ -1,5 +1,5 @@
 Version:Alpha
 Created:January/24/2026 EST
-Last Updated:March/3/2026 EST
+Last Updated:March/7/2026 EST
 
-Updated - 
+Updated - mainGlobal.css, mainglobal.js, header.html, Pages index.html, about me index.html, 404.html, index.html, basically everything

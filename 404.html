@@ -23,16 +23,24 @@
   <script src="/js/mainGlobal.js" defer></script>
 </head>
 <body>
+<noscript>
+  <div class="noscript-banner">
+    ⚠ JavaScript is disabled. Some features of this website may not work correctly.
+    Learn how to enable JavaScript here:
+    <a href="https://support.google.com/adsense/answer/12654?hl=en" target="_blank" rel="noopener">
+      Enable JavaScript Instructions
+    </a>
+  </div>
+</noscript>
   <div class="main">
     <div id="page-title">
-      <h1>404 - Page not found</h1>
+      <h3>404 - Page not found,</h1>
       <p>Welp... you seem to have found a page that doesn't exist.</p>
       <div id="description">
         <p id="smol"></p>
-        <a href="https://braxonsstuff.com">Go home</a>
-      </div><!--desc-->
+        <a href="/">Go home</a>
+      </div>
     </div>
-
   </div>
   <script>
     const messages = [
@@ -46,7 +54,9 @@
       "ruh roh",
       "look! a nonexistant page!",
       "must've been the wind",
-      "sucks to suck"
+      "sucks to suck",
+      "well well well... what do we have here?",
+      "I mean, in Australia there are 48 million Kangaroos and in Uruguay there are 3,457,380 inhabitants. So if the Kangaroos decide to invade Uruguay, each Uruguayan will have to fight 14 kangaroos."
     ];
     const smolText = document.getElementById("smol");
     const randomIndex = Math.floor(Math.random() * messages.length);
