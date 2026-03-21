@@ -30,53 +30,71 @@ body {
     color: var(--text-color);
 }
 
-/* smooth color transition for elements */
+/* transition for elements */
 body,
 .global-header {
     transition: background-color 0.35s ease, color 0.35s ease, border-color 0.35s ease;
 }
 
-/* Header */
-
+/* -------------------- Global Header -------------------- */
 .global-header {
+    position: sticky;
+    top: 0;
     background: var(--header-bg);
     border-bottom: 1px solid var(--border-color);
+    z-index: 1000;
 }
 
 .header-inner {
     max-width: 1100px;
     margin: auto;
-    padding: 10px 15px;
+    padding: 10px 16px;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
+/* Logo */
 .header-logo {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 8px;
+    font-size: 20px;
+    font-weight: 500;
     text-decoration: none;
     color: var(--text-color);
 }
 
 .header-logo img {
-    height: 28px;
+    width: 30px;
+    height: 30px;
 }
 
+/* Navigation */
 .header-nav {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 16px;
 }
 
-.nav-link {
+.header-nav .nav-link {
+    font-size: 15px;
+    font-weight: 500;
+    opacity: 0.9;
     text-decoration: none;
     color: var(--text-color);
-    font-size: 14px;
 }
 
+.header-nav .nav-link:hover {
+    text-decoration: underline;
+    opacity: 1;
+}
+
+/* things such as GitHub logo */
 .nav-icon {
+    display: inline-flex;
+    align-items: center;
+    opacity: 1;
     background: none;
     border: none;
     padding: 4px;
@@ -84,91 +102,36 @@ body,
 }
 
 .nav-icon img {
-    height: 20px;
-}
-
-/* -------------------- Global Header -------------------- */
-.global-header {
-  position: sticky;
-  top: 0;
-  background: var(--header-bg);
-  border-bottom: 1px solid var(--border-color);
-  z-index: 1000;
-}
-
-.header-inner {
-  max-width: 1100px;
-  margin: auto;
-  padding: 10px 16px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-/* Logo */
-.header-logo {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 18px;
-  font-weight: 700;
-  text-decoration: none;
-}
-
-.header-logo img {
-  width: 28px;
-  height: 28px;
-}
-
-/* Navigation */
-.header-nav {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.header-nav .nav-link {
-  font-size: 15px;
-  opacity: 0.9;
-  text-decoration: none;
-}
-
-.header-nav .nav-link:hover {
-  text-decoration: underline;
-}
-
-/* Icon buttons (GitHub, future theme toggle, etc.) */
-.nav-icon {
-  display: inline-flex;
-  align-items: center;
-  opacity: 0.9;
-}
-
-.nav-icon img {
-  width: 20px;
-  height: 20px;
+    width: 22px;
+    height: 22px;
 }
 
 .nav-icon:hover {
-  opacity: 1;
-  transform: scale(1.05);
+    transform: scale(1.05);
 }
 
-/* Main content */
+/* -------------------- Class noscript-banner -------------------- */
+.noscript-banner {
+    font-size: 25px;
+    color: #ff0000;
+    font-weight: 900;
+}
+/* Main/all*/
 .main {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: center;
 }
 
 .main #page-title {
-    font-size: clamp(24px, 5vw, 38px); /* responsive font size */
+    font-size: clamp(24px, 5vw, 38px);
     text-align: center;
     padding-top: 10px;
-    padding-left: 20px;   /* dynamic horizontal padding */
-    padding-right: 20px;  /* dynamic horizontal padding */
+    padding-left: 20px; 
+    padding-right: 20px;
 }
 
 .main #page-title #description {
-    font-size: clamp(14px, 2.5vw, 18px); /* responsive description */
+    font-size: clamp(14px, 2.5vw, 18px);
     text-align: center;
 }
 
@@ -200,7 +163,6 @@ footer {
     opacity: 0.7;
 }
 
-/* Icon link */
 .icon-link {
     display: inline-flex;
     align-items: center;
@@ -212,7 +174,7 @@ footer {
     height: 16px;
 }
 
-/* Mobile adjustments */
+
 @media (max-width: 600px) {
     .icon-link {
         flex-direction: column;
@@ -227,6 +189,7 @@ footer {
         display: block;
     }
 }
+
 /* -------------------- Theme Transition Overlay -------------------- */
 
 .theme-transition-overlay {
@@ -238,7 +201,6 @@ footer {
     transform: translateX(-100%);
 }
 
-/* wipe animation */
 .theme-transition-overlay.active {
     animation: themeSwipe 0.6s ease forwards;
 }
