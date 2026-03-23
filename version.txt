@@ -2,4 +2,5 @@ Version:Alpha
 Created:January/24/2026 EST
 Last Updated:March/23/2026 EST
 
-Updated - all the stuff lol
+Updated - 
+1. main index.html
