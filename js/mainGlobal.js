@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const favicon = document.createElement("link");
     favicon.rel = "icon";
     favicon.type = "image/png";
-    favicon.href = "/img/Braxon'sStuffLogo-256x256.png";
+    favicon.href = "/img/Braxon'sStuffLogo-Favicon.svg";
     document.head.appendChild(favicon);
   }
 
@@ -102,7 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .catch(err => console.error("Failed to load header:", err));
 
-  /* -------------------- Theme Toggle -------------------- */
+  /* -------------------- Theme Toggle -------------------- */ //NEEDS FIXING//
   function initThemeToggle() {
     const toggleBtn = document.getElementById("theme-toggle");
     const toggleIcon = document.getElementById("theme-toggle-icon");
@@ -140,30 +140,32 @@ document.addEventListener("DOMContentLoaded", () => {
     toggleBtn?.addEventListener("click", cycleTheme);
   }
 
-  /* -------------------- GitHub Icon Theme Handling -------------------- */
-  function initGitHubIcon() {
-    const icon = document.getElementById("github-icon");
-    if (!icon) return;
+    /* -------------------- GitHub Icon Theme Handling -------------------- */
+    function initGitHubIcon() {
+      const icon = document.getElementById("github-icon");
+      if (!icon) return;
 
-    function updateIcon() {
-      const isDark = document.documentElement.dataset.theme === "dark";
+      function updateIcon() {
+        const isDark = document.documentElement.dataset.theme === "dark";
 
-      icon.src = isDark
-        ? "/img/GitHubLogos/GitHubLogo-White.png"
-        : "/img/GitHubLogos/GitHubLogo.png";
+        icon.src = isDark
+          ? "/img/GitHubLogos/GitHubLogo-White.png"
+          : "/img/GitHubLogos/GitHubLogo.png";
+      }
+
+      updateIcon();
+
+      const observer = new MutationObserver(updateIcon);
+
+      observer.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ["data-theme"]
+      });
     }
 
-    updateIcon();
+// add thing to change all icons/logos to their dark and light mode 
 
-    const observer = new MutationObserver(updateIcon);
-
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ["data-theme"]
-    });
-  }
-
-  /* -------------------- Auto Footer -------------------- */
+    /* -------------------- Auto Footer -------------------- */
   if (!main.querySelector("footer")) {
     const footer = document.createElement("footer");
     const year = new Date().getFullYear();
