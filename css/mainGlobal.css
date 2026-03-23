@@ -110,7 +110,7 @@ body,
     transform: scale(1.05);
 }
 
-/* -------------------- Class noscript-banner -------------------- */
+/* -------------------- noscript-banner -------------------- */
 .noscript-banner {
     font-size: 25px;
     color: #ff0000;
@@ -149,6 +149,11 @@ body,
 .main a:hover {
     text-decoration: underline;
     cursor: pointer;
+}
+
+.main img, #Section img {
+    max-width: 100%;
+    height: auto;
 }
 
 #Section {
