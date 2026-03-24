@@ -1,4 +1,4 @@
-# Braxon's Stuff 🚀
+# Braxon's Stuff 
 
 **Welcome to my website!**  
 Here you’ll find cool projects, experiments, and some random epicness.  
