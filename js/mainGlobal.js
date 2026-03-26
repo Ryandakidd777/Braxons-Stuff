@@ -92,27 +92,15 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   /* -------------------- Global Header Loader -------------------- */
-  window.addEventListener("load", () => {
-    const main = document.querySelector(".main");
-    if (!main) return console.error(".main element not found");
+  fetch("/components/header.html")
+    .then(res => res.text())
+    .then(html => {
+      main.insertAdjacentHTML("afterbegin", html);
 
-    fetch("/components/header.html")
-      .then(res => {
-        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
-        return res.text();
-      })
-      .then(html => {
-        // Remove any <head> content from the snippet
-        const cleanedHTML = html.replace(/<head[\s\S]*?>[\s\S]*?<\/head>/gi, "");
-
-        // Insert the remaining HTML into .main
-        main.insertAdjacentHTML("afterbegin", cleanedHTML);
-
-        if (typeof initGitHubIcon === "function") initGitHubIcon();
-        if (typeof initThemeToggle === "function") initThemeToggle();
-      })
-      .catch(err => console.error("Failed to load header:", err));
-  });
+      initGitHubIcon();
+      initThemeToggle();
+    })
+    .catch(err => console.error("Failed to load header:", err));
 
   /* -------------------- Theme Toggle -------------------- */ //NEEDS FIXING//
   function initThemeToggle() {
