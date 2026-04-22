@@ -1,0 +1,103 @@
+name: 🐛 Bug Report
+description: Report a bug to help improve BraxonsStuff
+title: "[BUG] "
+labels: ["bug"]
+
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Describe the bug
+      description: Clearly explain what the bug is.
+      placeholder: Something broke when I...
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: How can this bug be reproduced?
+      placeholder: |
+        1. Go to '...'
+        2. Click on '...'
+        3. Scroll to '...'
+        4. See error
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: What should have happened instead?
+      placeholder: It should have...
+    validations:
+      required: true
+
+  - type: dropdown
+    id: os
+    attributes:
+      label: Operating System
+      options:
+        - Windows
+        - macOS
+        - Linux
+        - iOS
+        - Android
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: os_other
+    attributes:
+      label: Other Operating System
+      description: If you selected "Other", please specify which Operating System you are using.
+    validations:
+      required: false
+
+  - type: dropdown
+    id: browser
+    attributes:
+      label: Browser
+      options:
+        - Chrome
+        - Firefox
+        - Safari
+        - Edge
+        - Opera
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: browser_other
+    attributes:
+      label: Other browser
+      description: If you selected "Other", please specify which browser you are using.
+      placeholder: e.g. Brave, Vivaldi, Arc
+    validations:
+      required: false
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Console errors / logs
+      description: Paste any errors from the browser console (F12 → Console)
+      placeholder: Paste logs here...
+
+  - type: textarea
+    id: extra
+    attributes:
+      label: Additional context
+      description: Anything else we should know?
+      placeholder: Extra details, screenshots, etc.
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Before submitting
+      options:
+        - label: I have checked existing issues to make sure this bug has not already been reported.
+          required: true
