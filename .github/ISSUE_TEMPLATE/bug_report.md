@@ -17,10 +17,10 @@ Steps to reproduce the bug:
 4. See error
 
 ### Expected behavior
-A clear and concise description of what you expected to happen.
+A clear description of what you expected to happen instead of the bug occurring.
 
 ### Information Needed
- - OS: [e.g. iOS]
+ - OS: [e.g. iOS, Windows]
  - Browser: [e.g. chrome, safari]
 
 ### Console Errors/Logs
