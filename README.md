@@ -10,4 +10,4 @@ a brand new super duper shiny Update Log!
 **Check it out:** [braxonsstuff.com](https://braxonsstuff.com)
 ***I hear it’s pretty epic…***
 
-![Braxon's Stuff Logo](https://braxonsstuff.com/img/Braxon'sStuffLogo-128x128.png)
+![Braxon's Stuff Logo](https://braxonsstuff.com/img/Braxon'sStuffLogo.svg)
