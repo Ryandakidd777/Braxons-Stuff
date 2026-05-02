@@ -14,7 +14,7 @@ Here you’ll eventually find cool projects, experiments, and some random stuff.
 
 A totally epic test page for my projects page (coming eventually)
 
-**Check it out:**  [Project Tag Test Page](https://braxonsstuff.com/Stuff/ProjectTag_TestPage.html)
+**Check it out:**  [Project Tag Test Page](https://braxonsstuff.com/Stuff ProjectTag_TestPage.html)
 
 ---
 
