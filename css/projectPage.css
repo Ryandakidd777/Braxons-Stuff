@@ -1,6 +1,34 @@
 
-/* Project Tags */
+.project_label {
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 12px;
+  padding: 14px;
+  margin: 10px 0;
+  color: #c9d1d9;
+  transition: 0.2s ease;
+}
 
+.project_label:hover {
+  border-color: #58a6ff;
+  transform: translateY(-2px);
+}
+
+/* HEADER */
+.project_label header {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+/* DESCRIPTION */
+.project_label p {
+  font-size: 13px;
+  color: #8b949e;
+  margin-bottom: 10px;
+}
+
+/* PROJECT TAG (your existing system, slightly cleaned) */
 .project_progress_tag {
   display: inline-flex;
   align-items: center;
@@ -19,13 +47,6 @@
   background: rgba(139, 148, 158, 0.08);
 }
 
-.dot {
-  width: 8px;
-  height: 8px;
-  background: #6e7681;
-  border-radius: 50%;
-}
-
 /* WIP */
 #wip {
   color: #d29922;
@@ -33,6 +54,22 @@
   background: rgba(210, 153, 34, 0.08);
 }
 
+/* SUCCESS */
+#success {
+  color: #3fb950;
+  border-color: rgba(63, 185, 80, 0.4);
+  background: rgba(63, 185, 80, 0.08);
+}
+
+/* DOT ICON */
+.dot {
+  width: 8px;
+  height: 8px;
+  background: currentColor;
+  border-radius: 50%;
+}
+
+/* SPINNER */
 .icon svg {
   width: 12px;
   height: 12px;
@@ -50,17 +87,33 @@
   transform-origin: center;
 }
 
-/* SUCCESS */
-#success {
-  color: #3fb950;
-  border-color: rgba(63, 185, 80, 0.4);
-  background: rgba(63, 185, 80, 0.08);
-}
-
+/* CHECK ICON */
 .check {
   stroke: currentColor;
   stroke-linecap: round;
   stroke-linejoin: round;
+}
+
+.projects_container {
+  max-width: 450px;   
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.project_label {
+  width: 100%;
+}
+
+.project_image {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.project_image img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  display: block;
 }
 
 /* Animation */
