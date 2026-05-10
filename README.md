@@ -10,11 +10,11 @@ Here you’ll eventually find cool projects, experiments, and some random stuff.
 
 ---
 
-## RECENTLY ADDED
+## RECENTLY UPDATED
 
-A totally epic test page for my projects page (coming eventually)
+Made the Header Loader a seperate javascript file
 
-**Check it out:**  [Project Tag Test Page](https://braxonsstuff.com/Stuff/ProjectTag_TestPage.html)
+**Check it out:**  [Braxon's Stuff](https://braxonsstuff.com)
 
 ---
 
