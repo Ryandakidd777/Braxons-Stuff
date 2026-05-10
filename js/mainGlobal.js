@@ -91,17 +91,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  /* -------------------- Global Header Loader -------------------- */
-  fetch("/components/header.html")
-    .then(res => res.text())
-    .then(html => {
-      main.insertAdjacentHTML("afterbegin", html);
-
-      initGitHubIcon();
-      initThemeToggle();
-    })
-    .catch(err => console.error("Failed to load header:", err));
-
   /* -------------------- Theme Toggle -------------------- */ //NEEDS FIXING//
   function initThemeToggle() {
     const toggleBtn = document.getElementById("theme-toggle");
