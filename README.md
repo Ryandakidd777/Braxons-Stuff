@@ -4,7 +4,7 @@
 Here you’ll eventually find cool projects, experiments, and some random stuff.
 
 
-**Home Page:**  [braxonsstuff.com](https://braxonsstuff.com)  
+**Home Page:**  [Braxon's Stuff](https://braxonsstuff.com)  
 
 ***I hear it’s pretty epic…***
 
@@ -13,6 +13,7 @@ Here you’ll eventually find cool projects, experiments, and some random stuff.
 ## RECENTLY UPDATED
 
 Made the Header Loader a seperate javascript file
+Also worked on the home page!
 
 **Check it out:**  [Braxon's Stuff](https://braxonsstuff.com)
 

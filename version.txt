@@ -2,4 +2,4 @@ Version:Alpha
 Created:January/24/2026 EST
 Last Updated:May/10/2026 EST
 
-Updated - All index files, added headerLoader.js, edited mainGlobal.js
+Updated - Worked on index page
