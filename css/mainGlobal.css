@@ -158,6 +158,10 @@ body,
     height: auto;
 }
 
+.smol-text {
+    font-size:15px
+}
+
 #Section {
     text-align: center;
 }
