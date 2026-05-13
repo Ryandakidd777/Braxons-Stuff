@@ -1,5 +1,5 @@
 Version:Alpha
 Created:January/24/2026 EST
-Last Updated:May/10/2026 EST
+Last Updated:May/13/2026 EST
 
-Updated - Worked on index page
+Updated - Worked on css some, changed the pages page some, and also added the Black Holes page (in new Article catagory) for a science project

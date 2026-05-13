@@ -12,10 +12,9 @@ Here you’ll eventually find cool projects, experiments, and some random stuff.
 
 ## RECENTLY UPDATED
 
-Made the Header Loader a seperate javascript file
-Also worked on the home page!
+Added the Black Holes Article
 
-**Check it out:**  [Braxon's Stuff](https://braxonsstuff.com)
+**Check it out:**  [Braxon's Stuff - Black Holes Article](https://braxonsstuff.com/Pages/Articles/Black-Holes/)
 
 ---
 
