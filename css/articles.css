@@ -1,0 +1,13 @@
+/* © 2026 Braxon's Stuff. All rights reserved. */
+
+#Article-Section header {
+    font-size: clamp(24px, 5vw, 28px);
+}
+
+#Article-Section .Question_Bold {
+    font-weight: 500;
+}
+
+.nobold {
+    font-weight: 400;
+}
