@@ -1,13 +1,38 @@
 /* © 2026 Braxon's Stuff. All rights reserved. */
 
+/* wurd wurd wurd wurd wurd wurd wurd wurd wurd */
+/* wurd wurd wurd wurd wurd wurd wurd wurd wurd */
+/* wurd wurd wurd wurd wurd wurd wurd wurd wurd */
+/* wurd wurd wurd wurd wurd wurd wurd wurd wurd */
+/* wurd wurd wurd wurd wurd wurd wurd wurd wurd */
+/* wurd wurd wurd wurd wurd wurd wurd wurd wurd */
+/* wurd wurd wurd wurd wurd wurd wurd wurd wurd */
+/* wurd wurd wurd wurd wurd wurd wurd wurd wurd */
+
 #Article-Section header {
     font-size: clamp(24px, 5vw, 28px);
 }
 
-#Article-Section .Question_Bold {
+#Article-Section strong .Question_Bold {
+    font-weight: 500;
+    font-size: clamp(26px, 5vw, 30px);
+}
+
+#Article-Section p strong .p_bold {
     font-weight: 500;
 }
+
 
 .nobold {
     font-weight: 400;
 }
+
+
+/* wurd wurd wurd wurd wurd wurd wurd wurd wurd */
+/* wurd wurd wurd wurd wurd wurd wurd wurd wurd */
+/* wurd wurd wurd wurd wurd wurd wurd wurd wurd */
+/* wurd wurd wurd wurd wurd wurd wurd wurd wurd */
+/* wurd wurd wurd wurd wurd wurd wurd wurd wurd */
+/* wurd wurd wurd wurd wurd wurd wurd wurd wurd */
+/* wurd wurd wurd wurd wurd wurd wurd wurd wurd */
+/* wurd wurd wurd wurd wurd wurd wurd wurd wurd */
