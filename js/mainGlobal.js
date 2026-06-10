@@ -176,7 +176,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let initialPushTime = null;
 
-    // Check GitHub function
     async function checkWebsiteUpdate() {
       try {
         const response = await fetch("https://api.github.com/repos/Ryandakidd777/MrChicken-Braxons-Stuff");
@@ -194,12 +193,10 @@ document.addEventListener("DOMContentLoaded", () => {
         const statusLabel = document.getElementById("last-updated");
         if (!statusLabel) return;
 
-        // 1. Initial Page Load Setup
         if (initialPushTime === null) {
             initialPushTime = currentPushTime;
             statusLabel.innerText = `Last updated: ${formattedDate}`;
         } 
-        // 2. Continuous Live Updates (Appends Outdated Warning)
         else if (currentPushTime > initialPushTime) {
             statusLabel.innerHTML = `
                 Last updated: ${formattedDate} <span style="color: #ff4a4a; font-weight: 800; margin-left: 5px;">(Outdated - Please Refresh)</span>
@@ -211,36 +208,30 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
 
-    // Runs immediately on page display, then schedules background updates every 5 minutes
     checkWebsiteUpdate(); 
     setInterval(checkWebsiteUpdate, 5 * 60 * 1000); 
   }
 
-  // Trigger the footer routine
   injectAutoFooter();
-  
+
   /* -------------------- Missing Image Handler -------------------- */
   const PLACEHOLDER_IMG = "/img/misc/Placeholder.png";
 
   function handleImageError(img) {
-    if (img.dataset.fallbackApplied) return; // Prevent loops
+    if (img.dataset.fallbackApplied) return; 
 
     console.warn(`Missing image detected: ${img.src}`);
     img.dataset.fallbackApplied = "true";
 
-    // Set title with missing image source
     img.title = `Placeholder: Missing image: ${img.src}`;
 
-    // Replace source with placeholder
     img.src = PLACEHOLDER_IMG;
   }
 
-  // Attach to existing images
   document.querySelectorAll("img").forEach(img => {
     img.addEventListener("error", () => handleImageError(img));
   });
 
-  // Watch for dynamically added images
   const imgObserver = new MutationObserver(mutations => {
     mutations.forEach(mutation => {
       mutation.addedNodes.forEach(node => {
@@ -270,24 +261,22 @@ document.addEventListener("DOMContentLoaded", () => {
     const outputParts = [];
     const styleArgs = [];
 
-    // Function to generate fully random hex color
     function randomHexColor() {
       return '#' + Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0');
     }
 
-    // Function to generate random RGBA for backgrounds with transparency
     function randomRgba() {
       const r = Math.floor(Math.random() * 256);
       const g = Math.floor(Math.random() * 256);
       const b = Math.floor(Math.random() * 256);
-      const a = (Math.random() * 0.8 + 0.2).toFixed(2); // Avoid full transparency
+      const a = (Math.random() * 0.8 + 0.2).toFixed(2);
       return `rgba(${r},${g},${b},${a})`;
     }
 
     // Set to only one line
     for (let i = 0; i < text.length; i++) {
-      const color = randomHexColor(); // Fully random color
-      const bg = Math.random() < 0.6 ? randomRgba() : "transparent"; // Random background with chance for transparency
+      const color = randomHexColor(); 
+      const bg = Math.random() < 0.6 ? randomRgba() : "transparent"; 
       const font = fonts[Math.floor(Math.random() * fonts.length)];
       const bold = Math.random() < 0.8 ? "bold" : "normal";
       const italic = Math.random() < 0.7 ? "italic" : "normal";
@@ -295,8 +284,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const decorationStyle = decorations[Math.floor(Math.random() * decorations.length)];
       const decorationColor = randomHexColor();
       const decoration = `text-decoration: ${decorationStyle} ${decorationColor};`;
-      const size = `${Math.floor(Math.random() * 20) + 20}px`; // More similar sizes: 20-39px with a cap
-      const letterSpacing = `${Math.floor(Math.random() * 20 - 10)}px`; // More extreme spacing
+      const size = `${Math.floor(Math.random() * 20) + 20}px`; 
+      const letterSpacing = `${Math.floor(Math.random() * 20 - 10)}px`;
       const wordSpacing = `${Math.floor(Math.random() * 30 - 15)}px`;
       const shadowX = Math.floor(Math.random() * 20 - 10);
       const shadowY = Math.floor(Math.random() * 20 - 10);
@@ -304,21 +293,21 @@ document.addEventListener("DOMContentLoaded", () => {
       const shadowColor = randomHexColor();
       const shadow = `${shadowX}px ${shadowY}px ${shadowBlur}px ${shadowColor}`;
       const padding = `${Math.floor(Math.random() * 20)}px ${Math.floor(Math.random() * 20)}px`;
-      const margin = `${Math.floor(Math.random() * 10 - 5)}px`; // Can be negative for overlap chaos
+      const margin = `${Math.floor(Math.random() * 10 - 5)}px`;
       const borderStyle = borders[Math.floor(Math.random() * borders.length)];
       const borderColor = randomHexColor();
       const border = `${borderStyle} ${borderColor}`;
-      const opacity = (Math.random() * 0.8 + 0.2).toFixed(2); // Random opacity
+      const opacity = (Math.random() * 0.8 + 0.2).toFixed(2);
       const filter = filters[Math.floor(Math.random() * filters.length)];
 
       let transform = "";
-      const numTransforms = Math.floor(Math.random() * 3) + 1; // Apply 1-3 transforms for compounded madness
+      const numTransforms = Math.floor(Math.random() * 3) + 1;
       const transformParts = [];
       for (let t = 0; t < numTransforms; t++) {
         const choice = transforms[Math.floor(Math.random() * transforms.length)];
         let value;
         if (choice === "rotate") {
-          value = Math.floor(Math.random() * 720 - 360); // Double the spin range
+          value = Math.floor(Math.random() * 720 - 360);
           transformParts.push(`rotate(${value}deg)`);
         } else if (choice === "skewX") {
           value = Math.floor(Math.random() * 180 - 90);
