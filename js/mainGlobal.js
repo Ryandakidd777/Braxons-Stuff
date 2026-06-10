@@ -178,7 +178,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     async function checkWebsiteUpdate() {
       try {
-        const response = await fetch("https://api.github.com/repos/Ryandakidd777/MrChicken-Braxons-Stuff");
+        const response = await fetch("https://api.github.com/repos/Ryandakidd777/Braxons-Stuff");
         if (!response.ok) throw new Error("GitHub API connection failed");
         
         const repoData = await response.json();

@@ -45,26 +45,32 @@
       </div>
     </div>
   </div>
-  <script>
-    const messages = [
-      "skill issue",
-      "this page went to get milk",
-      "wrong turn buddy",
-      "you weren't supposed to see this",
-      "task failed successfully",
-      "*insert trombone sound here*",
-      "well, would you look at that",
-      "ruh roh",
-      "look! a nonexistant page!",
-      "must've been the wind",
-      "sucks to suck",
-      "well well well... what do we have here?",
-      "I mean, in Australia there are 48 million Kangaroos and in Uruguay there are 3,457,380 inhabitants. So if the Kangaroos decide to invade Uruguay, each Uruguayan will have to fight 14 kangaroos.",
-      "zoinks"
-    ];
-    const smolText = document.getElementById("smol");
-    const randomIndex = Math.floor(Math.random() * messages.length);
+<script>
+  const messages = [
+    'skill issue',
+    'this page went to get milk',
+    'wrong turn buddy',
+    "you weren't supposed to see this",
+    'task failed successfully',
+    '*insert trombone sound here*',
+    'well, would you look at that',
+    'ruh roh',
+    'look! a nonexistant page!',
+    "must've been the wind",
+    'sucks to suck',
+    'well well well... what do we have here?',
+    'I mean, in Australia there are 48 million Kangaroos and in Uruguay there are 3,457,380 inhabitants. So if the Kangaroos decide to invade Uruguay, each Uruguayan will have to fight 14 kangaroos.',
+    'zoinks',
+    '<img src="/img/misc/Random/UglyManShirt.png" height="125" width="125">'
+  ];
+
+  const smolText = document.getElementById("smol");
+  const randomIndex = Math.floor(Math.random() * messages.length);
+  if (messages[randomIndex].includes('<img')) {
+    smolText.innerHTML = messages[randomIndex];
+  } else {
     smolText.textContent = messages[randomIndex];
-  </script>
+  }
+</script>
 </body>
 </html>
