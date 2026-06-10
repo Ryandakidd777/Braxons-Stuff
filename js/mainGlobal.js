@@ -154,12 +154,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // add thing to change all icons/logos to their dark and light mode 
 
-    /* -------------------- Auto Footer -------------------- */
-  if (!main.querySelector("footer")) {
+/* -------------------- Auto Footer -------------------- */
+  function injectAutoFooter() {
+    if (main.querySelector("footer")) return;
+
     const footer = document.createElement("footer");
     const year = new Date().getFullYear();
 
-    footer.textContent = `© ${year} Braxon's Stuff. All rights reserved.`;
+    footer.innerHTML = `
+      <p id="last-updated">Checking GitHub for updates...</p>
+      <p>&copy; ${year} MrChicken's Homemade Website. All rights reserved.</p>
+    `;
+
     footer.style.marginTop = "auto";
     footer.style.padding = "10px";
     footer.style.textAlign = "center";
@@ -167,8 +173,52 @@ document.addEventListener("DOMContentLoaded", () => {
     footer.style.opacity = "0.7";
 
     main.appendChild(footer);
+
+    let initialPushTime = null;
+
+    // Check GitHub function
+    async function checkWebsiteUpdate() {
+      try {
+        const response = await fetch("https://api.github.com/repos/Ryandakidd777/MrChicken-Braxons-Stuff");
+        if (!response.ok) throw new Error("GitHub API connection failed");
+        
+        const repoData = await response.json();
+        const currentPushTime = Date.parse(repoData.pushed_at); 
+        
+        const formattedDate = new Date(currentPushTime).toLocaleDateString("en-US", {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+
+        const statusLabel = document.getElementById("last-updated");
+        if (!statusLabel) return;
+
+        // 1. Initial Page Load Setup
+        if (initialPushTime === null) {
+            initialPushTime = currentPushTime;
+            statusLabel.innerText = `Last updated: ${formattedDate}`;
+        } 
+        // 2. Continuous Live Updates (Appends Outdated Warning)
+        else if (currentPushTime > initialPushTime) {
+            statusLabel.innerHTML = `
+                Last updated: ${formattedDate} <span style="color: #ff4a4a; font-weight: 800; margin-left: 5px;">(Outdated - Please Refresh)</span>
+            `;
+        }
+        
+      } catch (error) {
+        console.error("Error tracking repository update status:", error);
+      }
+    }
+
+    // Runs immediately on page display, then schedules background updates every 5 minutes
+    checkWebsiteUpdate(); 
+    setInterval(checkWebsiteUpdate, 5 * 60 * 1000); 
   }
 
+  // Trigger the footer routine
+  injectAutoFooter();
+  
   /* -------------------- Missing Image Handler -------------------- */
   const PLACEHOLDER_IMG = "/img/misc/Placeholder.png";
 
