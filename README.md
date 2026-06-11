@@ -19,3 +19,5 @@ Added the Black Holes Article
 ---
 
 ![Braxon's Stuff Logo](https://braxonsstuff.com/Media/img/Braxon'sStuffLogo-256x256.png)
+
+---
