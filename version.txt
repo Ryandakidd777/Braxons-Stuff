@@ -1,5 +1,9 @@
 Version:Alpha
 Created:January/24/2026 EST
-Last Updated:6/10/2026 EST
+Last Updated:6/11/2026 EST
 
-Updated - Worked on tons of stuff
+Updated - Organized media things
+
+Things to do:
+Go through all pages, and files, and **FINISH** them. Use "<!--Needs Finished-->" at top of html
+files to determine what needs done.

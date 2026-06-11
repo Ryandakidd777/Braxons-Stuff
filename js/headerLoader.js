@@ -51,11 +51,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function updateIcon(theme) {
       if (theme === "dark") {
-        toggleIcon.src = "/img/LightDarkIcons/DarkToggle.png";
+        toggleIcon.src = "/Media/img/LightDarkIcons/DarkToggle.png";
       } else if (theme === "light") {
-        toggleIcon.src = "/img/LightDarkIcons/LightToggle.png";
+        toggleIcon.src = "/Media/img/LightDarkIcons/LightToggle.png";
       } else {
-        toggleIcon.src = "/img/LightDarkIcons/DefaultToggle.png";
+        toggleIcon.src = "/Media/img/LightDarkIcons/DefaultToggle.png";
       }
     }
 
@@ -93,8 +93,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const isDark = document.documentElement.dataset.theme === "dark";
 
       icon.src = isDark
-        ? "/img/GitHubLogos/GitHubLogo-White.png"
-        : "/img/GitHubLogos/GitHubLogo.png";
+        ? "/Media/img/GitHubLogos/GitHubLogo-White.png"
+        : "/Media/img/GitHubLogos/GitHubLogo.png";
     }
 
     updateIcon();

@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const favicon = document.createElement("link");
     favicon.rel = "icon";
     favicon.type = "image/png";
-    favicon.href = "/img/Braxon'sStuffLogo-Favicon.svg";
+    favicon.href = "/Media/img/Braxon'sStuffLogo-Favicon.svg";
     document.head.appendChild(favicon);
   }
 
@@ -48,13 +48,13 @@ document.addEventListener("DOMContentLoaded", () => {
   addMeta("property", "og:description", "Welcome to Braxon's Stuff! It's some stuff, by Braxon.");
   addMeta("property", "og:type", "website");
   addMeta("property", "og:url", "https://braxonsstuff.com/");
-  addMeta("property", "og:image", "https://braxonsstuff.com/img/Braxon'sStuffLogo-128x128.png");
+  addMeta("property", "og:image", "https://braxonsstuff.com/Media/img/Braxon'sStuffLogo-128x128.png");
 
   /* -------------------- Twitter Card Meta -------------------- */
   addMeta("name", "twitter:card", "summary_large_image");
   addMeta("name", "twitter:title", "Braxon's Stuff");
   addMeta("name", "twitter:description", "Welcome to Braxon's Stuff! It's some stuff, by Braxon.");
-  addMeta("name", "twitter:image", "https://braxonsstuff.com/img/Braxon'sStuffLogo-128x128.png");
+  addMeta("name", "twitter:image", "https://braxonsstuff.com/Media/img/Braxon'sStuffLogo-128x128.png");
 
   /* -------------------- Theme Controller -------------------- */
   const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
@@ -100,13 +100,13 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!toggleIcon) return;
 
       if (theme === "dark")
-        toggleIcon.src = "/img/LightDarkIcons/DarkToggle.png";
+        toggleIcon.src = "/Media/img/LightDarkIcons/DarkToggle.png";
 
       else if (theme === "light")
-        toggleIcon.src = "/img/LightDarkIcons/LightToggle.png";
+        toggleIcon.src = "/Media/img/LightDarkIcons/LightToggle.png";
 
       else
-        toggleIcon.src = "/img/LightDarkIcons/DefaultToggle.png";
+        toggleIcon.src = "/Media/img/LightDarkIcons/DefaultToggle.png";
     }
 
     function cycleTheme() {
@@ -138,8 +138,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const isDark = document.documentElement.dataset.theme === "dark";
 
         icon.src = isDark
-          ? "/img/GitHubLogos/GitHubLogo-White.png"
-          : "/img/GitHubLogos/GitHubLogo.png";
+          ? "/Media/img/GitHubLogos/GitHubLogo-White.png"
+          : "/Media/img/GitHubLogos/GitHubLogo.png";
       }
 
       updateIcon();
@@ -215,7 +215,7 @@ document.addEventListener("DOMContentLoaded", () => {
   injectAutoFooter();
 
   /* -------------------- Missing Image Handler -------------------- */
-  const PLACEHOLDER_IMG = "/img/misc/Placeholder.png";
+  const PLACEHOLDER_IMG = "/Media/img/misc/Placeholder.png";
 
   function handleImageError(img) {
     if (img.dataset.fallbackApplied) return; 
