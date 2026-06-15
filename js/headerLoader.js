@@ -1,3 +1,4 @@
+/*Copyright © 2026 Braxon's Stuff. All rights reserved.*/
 // /js/headerLoader.js
 document.addEventListener("DOMContentLoaded", () => {
 
