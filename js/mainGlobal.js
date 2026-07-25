@@ -164,7 +164,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     footer.innerHTML = `
       <p id="last-updated">Checking GitHub for updates...</p>
-      <p>&copy; ${year} MrChicken's Homemade Website. All rights reserved.</p>
+      <p>&copy; ${year} Braxon's Stuff. All rights reserved.</p>
     `;
 
     footer.style.marginTop = "auto";
