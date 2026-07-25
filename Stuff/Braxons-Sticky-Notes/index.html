@@ -53,11 +53,19 @@
                     Download Link
                     </a>
                 </p>
+                <p id="latest-release-info" class="latest-release">
+                    Checking GitHub for the latest release&hellip;
+                </p>
                 <p>
                     <a href="https://github.com/Ryandakidd777/braxon-s-sticky-notes-extension/" class="icon-link">
                     Source Code on GitHub
                     </a>
-                </p>                
+                </p> 
+                <p>
+                    <a href="https://github.com/Ryandakidd777/braxon-s-sticky-notes-extension/issues" class="icon-link">
+                    Report a Bug/Suggest a feature
+                    </a>
+                </p>  
             </div>
             <header>Install Instructions</header>
             <div id="description">
@@ -70,13 +78,15 @@
                     Or follow instructions below:
                 </p>
                 <p>
-                    <strong>1.</strong> Click the <strong>Download Link</strong> above to download <code>braxon.sStickyNotes_v1.0.0.zip</code>.
+                    <strong>1.</strong> Click the <strong>Download Link</strong> above to download the latest version, the file should look similar 
+                    to "<code>braxon.sStickyNotes_v1.0.0.zip</code>".
                 </p>
                 <p>
-                    <strong>2.</strong> Unzip the file to a folder you'll keep around. Your browser loads the extension directly from this folder, so don't delete or move it after installing.
+                    <strong>2.</strong> Unzip the file to a folder you'll keep around. Your browser loads the extension directly from this folder, 
+                    so don't delete or move it after installing.
                 </p>
                 <p>
-                    <strong>3.</strong> Open your browser's extensions page &mdash; Chrome: <code>chrome://extensions</code>, Edge: <code>edge://extensions</code>, Brave: <code>brave://extensions</code>.
+                    <strong>3.</strong> Open your browser's extensions page.
                 </p>
                 <p>
                     <strong>4.</strong> Turn on <strong>Developer mode</strong> using the toggle in the top-right corner of the page.
@@ -88,10 +98,56 @@
                     <strong>6.</strong> Select the folder you unzipped in step 2.
                 </p>
                 <p>
-                    <strong>7.</strong> Braxon's Sticky Notes should now appear in your toolbar. Click the puzzle-piece icon and pin it for quick access.
+                    <strong>7.</strong> Braxon's Sticky Notes should now appear in your toolbar. Click the puzzle-piece icon and pin it for quick 
+                    access.
+                </p>
+            </div>
+            <br>
+            <header>Updating Instructions</header>
+            <div id="description">
+                <p>
+                    <strong>1.</strong> Click the <strong>Download Link</strong> above to download the newest version; the file should look similar 
+                    to "<code>braxon.sStickyNotes_vX.X.X.zip</code>".
+                </p>
+                <p>
+                    <strong>2.</strong> Unzip the new file into the <strong>same folder</strong> you used when you first installed the extension, 
+                    overwriting the old files.
+                </p>
+                <p>
+                    <strong>3.</strong> Open your browser's extensions page.
+                </p>
+                <p>
+                    <strong>4.</strong> Find the Braxon's Sticky Notes card and click the <strong>reload icon</strong> on it. 
+                    This reloads the extension with the new files.
                 </p>
             </div>
         </div>
     </div>
+<script>
+(function () {
+    var el = document.getElementById('latest-release-info');
+    if (!el) return;
+
+    fetch('https://api.github.com/repos/Ryandakidd777/braxon-s-sticky-notes-extension/releases/latest')
+        .then(function (res) {
+            if (!res.ok) throw new Error('GitHub API responded with ' + res.status);
+            return res.json();
+        })
+        .then(function (release) {
+            var version = release.tag_name || 'unknown';
+            var published = release.published_at ? new Date(release.published_at) : null;
+            var dateStr = published
+                ? published.toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' })
+                : null;
+
+            el.textContent = dateStr
+                ? 'Latest release: ' + version + ' (published ' + dateStr + ')'
+                : 'Latest release: ' + version;
+        })
+        .catch(function () {
+            el.textContent = 'Couldn\'t load the latest release info right now \u2014 check the GitHub page directly.';
+        });
+})();
+</script>
 </body>
 </html>
