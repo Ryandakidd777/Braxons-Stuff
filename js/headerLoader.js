@@ -1,20 +1,19 @@
 /*Copyright © 2026 Braxon's Stuff. All rights reserved.*/
 // /js/headerLoader.js
 document.addEventListener("DOMContentLoaded", () => {
-
   const main = document.querySelector(".main");
   if (!main) return;
 
   /* -------------------- Global Header Loader -------------------- */
   fetch("/components/header.html")
-    .then(res => res.text())
-    .then(html => {
+    .then((res) => res.text())
+    .then((html) => {
       main.insertAdjacentHTML("afterbegin", html);
 
       initGitHubIcon();
       initThemeToggle();
     })
-    .catch(err => console.error("Failed to load header:", err));
+    .catch((err) => console.error("Failed to load header:", err));
 
   /* -------------------- Theme Controller -------------------- */
   const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
@@ -34,8 +33,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function applyTheme(theme) {
     if (theme === "system") {
-      document.documentElement.dataset.theme =
-        mediaQuery.matches ? "dark" : "light";
+      document.documentElement.dataset.theme = mediaQuery.matches
+        ? "dark"
+        : "light";
     } else {
       document.documentElement.dataset.theme = theme;
     }
@@ -104,7 +104,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     observer.observe(document.documentElement, {
       attributes: true,
-      attributeFilter: ["data-theme"]
+      attributeFilter: ["data-theme"],
     });
   }
 });

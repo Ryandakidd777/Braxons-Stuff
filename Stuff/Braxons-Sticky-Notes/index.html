@@ -1,155 +1,208 @@
 <!--Copyright © 2026 Braxon's Stuff. All rights reserved.-->
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Welcome to Braxon's Stuff! It's some stuff, by Braxon.">
-    <meta name="theme-color" content="#ffffff">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Welcome to Braxon's Stuff! It's some stuff, by Braxon."
+    />
+    <meta name="theme-color" content="#ffffff" />
 
-    <meta property="og:title" content="Braxon's Stuff">
-    <meta property="og:description" content="Welcome to Braxon's Stuff! It's some stuff, by Braxon.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://braxonsstuff.com/">
-    <meta property="og:image" content="https://braxonsstuff.com/Media/img/Braxon'sStuffLogo-128x128.png">
+    <meta property="og:title" content="Braxon's Stuff" />
+    <meta
+      property="og:description"
+      content="Welcome to Braxon's Stuff! It's some stuff, by Braxon."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://braxonsstuff.com/" />
+    <meta
+      property="og:image"
+      content="https://braxonsstuff.com/Media/img/Braxon'sStuffLogo-128x128.png"
+    />
 
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Braxon's Stuff">
-    <meta name="twitter:description" content="Welcome to Braxon's Stuff! It's some stuff, by Braxon.">
-    <meta name="twitter:image" content="https://braxonsstuff.com/Media/img/Braxon'sStuffLogo-128x128.png">
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Braxon's Stuff" />
+    <meta
+      name="twitter:description"
+      content="Welcome to Braxon's Stuff! It's some stuff, by Braxon."
+    />
+    <meta
+      name="twitter:image"
+      content="https://braxonsstuff.com/Media/img/Braxon'sStuffLogo-128x128.png"
+    />
 
     <title>Braxon's Sticky Notes</title>
-    <link rel="icon" href="/Media/img/Braxon'sStuffLogo-Favicon.svg">
-    <link rel="stylesheet" href="/css/mainGlobal.css">
+    <link rel="icon" href="/Media/img/Braxon'sStuffLogo-Favicon.svg" />
+    <link rel="stylesheet" href="/css/mainGlobal.css" />
     <script src="/js/mainGlobal.js" defer></script>
     <script src="/js/headerLoader.js" defer></script>
-</head>
-<body>
-<noscript>
-  <div class="noscript-banner">
-    ⚠ JavaScript is disabled. Some features of this website may not work correctly.
-    Learn how to enable JavaScript here:
-    <a href="https://support.google.com/adsense/answer/12654?hl=en" target="_blank" rel="noopener">
-      Enable JavaScript Instructions
-    </a>
-  </div>
-</noscript>
+  </head>
+  <body>
+    <noscript>
+      <div class="noscript-banner">
+        ⚠ JavaScript is disabled. Some features of this website may not work
+        correctly. Learn how to enable JavaScript here:
+        <a
+          href="https://support.google.com/adsense/answer/12654?hl=en"
+          target="_blank"
+          rel="noopener"
+        >
+          Enable JavaScript Instructions
+        </a>
+      </div>
+    </noscript>
     <div class="main">
-        <div id="page-title">
-            <header>Braxon's Sticky Notes - A Chrome Extension</header>
-            <div id="description">
-                <img src="/Media/img/BraxonsStickyNotes/StickyNotesExtensionIcon@500x.png" width="128" height="128">
-                <br>
-                <p>
-                    Braxon's Sticky Notes is a lightweight browser extension for jotting down quick notes without leaving your toolbar. 
-                    It supports multiple notes you can switch between instantly, basic rich-text formatting for bold and italics, and 
-                    two visual themes — a classic yellow legal-pad style and a minimal modern look. An optional delete confirmation 
-                    helps prevent accidental data loss, and built-in export/import lets you back up your notes as a JSON file or move 
-                    them between installs. All data is stored locally through the browser's native storage API. Works across Chromium-based
-                    browsers including Chrome, Edge, and Brave.
-                </p>
-                <p>
-                    <a href=
-                    "https://github.com/Ryandakidd777/braxon-s-sticky-notes-extension/releases/download/v1.0.0/braxon.sStickyNotes_v1.0.0.zip" 
-                    class="icon-link" rel="noopener"class="icon-link">
-                    Download Link
-                    </a>
-                </p>
-                <p id="latest-release-info" class="latest-release">
-                    Checking GitHub for the latest release&hellip;
-                </p>
-                <p>
-                    <a href="https://github.com/Ryandakidd777/braxon-s-sticky-notes-extension/" class="icon-link" rel="noopener"class="icon-link">
-                    Source Code on GitHub
-                    </a>
-                </p> 
-                <p>
-                    <a href="https://github.com/Ryandakidd777/braxon-s-sticky-notes-extension/issues" class="icon-link" rel="noopener"class="icon-link">
-                    Report a Bug/Suggest a feature
-                    </a>
-                </p>  
-            </div>
-            <header>Install Instructions</header>
-            <div id="description">
-                <p>
-                    <a href="https://youtu.be/29OVzBCaYMg" class="icon-link" rel="noopener"class="icon-link">
-                    Watch on YouTube:
-                    </a>
-                </p>
-                <p>
-                    Or follow instructions below:
-                </p>
-                <p>
-                    <strong>1.</strong> Click the <strong>Download Link</strong> above to download the latest version, the file should look similar 
-                    to "<code>braxon.sStickyNotes_v1.0.0.zip</code>".
-                </p>
-                <p>
-                    <strong>2.</strong> Unzip the file to a folder you'll keep around. Your browser loads the extension directly from this folder, 
-                    so don't delete or move it after installing.
-                </p>
-                <p>
-                    <strong>3.</strong> Open your browser's extensions page.
-                </p>
-                <p>
-                    <strong>4.</strong> Turn on <strong>Developer mode</strong> using the toggle in the top-right corner of the page.
-                </p>
-                <p>
-                    <strong>5.</strong> Click the <strong>Load unpacked</strong> button.
-                </p>
-                <p>
-                    <strong>6.</strong> Select the folder you unzipped in step 2.
-                </p>
-                <p>
-                    <strong>7.</strong> Braxon's Sticky Notes should now appear in your toolbar. Click the puzzle-piece icon and pin it for quick 
-                    access.
-                </p>
-            </div>
-            <br>
-            <header>Updating Instructions</header>
-            <div id="description">
-                <p>
-                    <strong>1.</strong> Click the <strong>Download Link</strong> above to download the newest version; the file should look similar 
-                    to "<code>braxon.sStickyNotes_vX.X.X.zip</code>".
-                </p>
-                <p>
-                    <strong>2.</strong> Unzip the new file into the <strong>same folder</strong> you used when you first installed the extension, 
-                    overwriting the old files.
-                </p>
-                <p>
-                    <strong>3.</strong> Open your browser's extensions page.
-                </p>
-                <p>
-                    <strong>4.</strong> Find the Braxon's Sticky Notes card and click the <strong>reload icon</strong> on it. 
-                    This reloads the extension with the new files.
-                </p>
-            </div>
+      <div id="page-title">
+        <header>Braxon's Sticky Notes - A Chrome Extension</header>
+        <div id="description">
+          <img
+            src="/Media/img/BraxonsStickyNotes/StickyNotesExtensionIcon@500x.png"
+            width="128"
+            height="128"
+          />
+          <br />
+          <p>
+            Braxon's Sticky Notes is a lightweight browser extension for jotting
+            down quick notes without leaving your toolbar. It supports multiple
+            notes you can switch between instantly, basic rich-text formatting
+            for bold and italics, and two visual themes — a classic yellow
+            legal-pad style and a minimal modern look. An optional delete
+            confirmation helps prevent accidental data loss, and built-in
+            export/import lets you back up your notes as a JSON file or move
+            them between installs. All data is stored locally through the
+            browser's native storage API. Works across Chromium-based browsers
+            including Chrome, Edge, and Brave.
+          </p>
+          <p>
+            <a
+              href="https://github.com/Ryandakidd777/braxon-s-sticky-notes-extension/releases/download/v1.0.0/braxon.sStickyNotes_v1.0.0.zip"
+              class="icon-link"
+              rel="noopener"
+              class="icon-link"
+            >
+              Download Link
+            </a>
+          </p>
+          <p id="latest-release-info" class="latest-release">
+            Checking GitHub for the latest release&hellip;
+          </p>
+          <p>
+            <a
+              href="https://github.com/Ryandakidd777/braxon-s-sticky-notes-extension/"
+              class="icon-link"
+              rel="noopener"
+              class="icon-link"
+            >
+              Source Code on GitHub
+            </a>
+          </p>
+          <p>
+            <a
+              href="https://github.com/Ryandakidd777/braxon-s-sticky-notes-extension/issues"
+              class="icon-link"
+              rel="noopener"
+              class="icon-link"
+            >
+              Report a Bug/Suggest a feature
+            </a>
+          </p>
         </div>
+        <header>Install Instructions</header>
+        <div id="description">
+          <p>
+            <a
+              href="https://youtu.be/29OVzBCaYMg"
+              class="icon-link"
+              rel="noopener"
+              class="icon-link"
+            >
+              Watch on YouTube:
+            </a>
+          </p>
+          <p>Or follow instructions below:</p>
+          <p>
+            <strong>1.</strong> Click the <strong>Download Link</strong> above
+            to download the latest version, the file should look similar to
+            "<code>braxon.sStickyNotes_v1.0.0.zip</code>".
+          </p>
+          <p>
+            <strong>2.</strong> Unzip the file to a folder you'll keep around.
+            Your browser loads the extension directly from this folder, so don't
+            delete or move it after installing.
+          </p>
+          <p><strong>3.</strong> Open your browser's extensions page.</p>
+          <p>
+            <strong>4.</strong> Turn on <strong>Developer mode</strong> using
+            the toggle in the top-right corner of the page.
+          </p>
+          <p>
+            <strong>5.</strong> Click the <strong>Load unpacked</strong> button.
+          </p>
+          <p><strong>6.</strong> Select the folder you unzipped in step 2.</p>
+          <p>
+            <strong>7.</strong> Braxon's Sticky Notes should now appear in your
+            toolbar. Click the puzzle-piece icon and pin it for quick access.
+          </p>
+        </div>
+        <br />
+        <header>Updating Instructions</header>
+        <div id="description">
+          <p>
+            <strong>1.</strong> Click the <strong>Download Link</strong> above
+            to download the newest version; the file should look similar to
+            "<code>braxon.sStickyNotes_vX.X.X.zip</code>".
+          </p>
+          <p>
+            <strong>2.</strong> Unzip the new file into the
+            <strong>same folder</strong> you used when you first installed the
+            extension, overwriting the old files.
+          </p>
+          <p><strong>3.</strong> Open your browser's extensions page.</p>
+          <p>
+            <strong>4.</strong> Find the Braxon's Sticky Notes card and click
+            the <strong>reload icon</strong> on it. This reloads the extension
+            with the new files.
+          </p>
+        </div>
+      </div>
     </div>
-<script>
-(function () {
-    var el = document.getElementById('latest-release-info');
-    if (!el) return;
+    <script>
+      (function () {
+        var el = document.getElementById("latest-release-info");
+        if (!el) return;
 
-    fetch('https://api.github.com/repos/Ryandakidd777/braxon-s-sticky-notes-extension/releases/latest')
-        .then(function (res) {
-            if (!res.ok) throw new Error('GitHub API responded with ' + res.status);
+        fetch(
+          "https://api.github.com/repos/Ryandakidd777/braxon-s-sticky-notes-extension/releases/latest",
+        )
+          .then(function (res) {
+            if (!res.ok)
+              throw new Error("GitHub API responded with " + res.status);
             return res.json();
-        })
-        .then(function (release) {
-            var version = release.tag_name || 'unknown';
-            var published = release.published_at ? new Date(release.published_at) : null;
+          })
+          .then(function (release) {
+            var version = release.tag_name || "unknown";
+            var published = release.published_at
+              ? new Date(release.published_at)
+              : null;
             var dateStr = published
-                ? published.toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' })
-                : null;
+              ? published.toLocaleDateString(undefined, {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })
+              : null;
 
             el.textContent = dateStr
-                ? 'Latest release: ' + version + ' (published ' + dateStr + ')'
-                : 'Latest release: ' + version;
-        })
-        .catch(function () {
-            el.textContent = 'Couldn\'t load the latest release info right now \u2014 check the GitHub page directly.';
-        });
-})();
-</script>
-</body>
+              ? "Latest release: " + version + " (published " + dateStr + ")"
+              : "Latest release: " + version;
+          })
+          .catch(function () {
+            el.textContent =
+              "Couldn't load the latest release info right now \u2014 check the GitHub page directly.";
+          });
+      })();
+    </script>
+  </body>
 </html>

@@ -1,7 +1,6 @@
 /*Copyright © 2026 Braxon's Stuff. All rights reserved.*/
 // /js/mainGlobal.js
 document.addEventListener("DOMContentLoaded", () => {
-
   /* -------------------- Base Page Setup -------------------- */
   document.documentElement.style.height = "100%";
   document.body.style.margin = "0";
@@ -41,21 +40,45 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* -------------------- Standard Meta -------------------- */
   addMeta("name", "viewport", "width=device-width, initial-scale=1.0");
-  addMeta("name", "description", "Welcome to Braxon's Stuff! It's some stuff, by Braxon.");
-  addMeta("name", "theme-color", document.documentElement.dataset.theme === "dark" ? "#0f0f0f" : "#ffffff");
+  addMeta(
+    "name",
+    "description",
+    "Welcome to Braxon's Stuff! It's some stuff, by Braxon.",
+  );
+  addMeta(
+    "name",
+    "theme-color",
+    document.documentElement.dataset.theme === "dark" ? "#0f0f0f" : "#ffffff",
+  );
 
   /* -------------------- Open Graph Meta -------------------- */
   addMeta("property", "og:title", "Braxon's Stuff");
-  addMeta("property", "og:description", "Welcome to Braxon's Stuff! It's some stuff, by Braxon.");
+  addMeta(
+    "property",
+    "og:description",
+    "Welcome to Braxon's Stuff! It's some stuff, by Braxon.",
+  );
   addMeta("property", "og:type", "website");
   addMeta("property", "og:url", "https://braxonsstuff.com/");
-  addMeta("property", "og:image", "https://braxonsstuff.com/Media/img/Braxon'sStuffLogo-128x128.png");
+  addMeta(
+    "property",
+    "og:image",
+    "https://braxonsstuff.com/Media/img/Braxon'sStuffLogo-128x128.png",
+  );
 
   /* -------------------- Twitter Card Meta -------------------- */
   addMeta("name", "twitter:card", "summary_large_image");
   addMeta("name", "twitter:title", "Braxon's Stuff");
-  addMeta("name", "twitter:description", "Welcome to Braxon's Stuff! It's some stuff, by Braxon.");
-  addMeta("name", "twitter:image", "https://braxonsstuff.com/Media/img/Braxon'sStuffLogo-128x128.png");
+  addMeta(
+    "name",
+    "twitter:description",
+    "Welcome to Braxon's Stuff! It's some stuff, by Braxon.",
+  );
+  addMeta(
+    "name",
+    "twitter:image",
+    "https://braxonsstuff.com/Media/img/Braxon'sStuffLogo-128x128.png",
+  );
 
   /* -------------------- Theme Controller -------------------- */
   const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
@@ -75,8 +98,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function applyTheme(theme) {
     if (theme === "system") {
-      document.documentElement.dataset.theme =
-        mediaQuery.matches ? "dark" : "light";
+      document.documentElement.dataset.theme = mediaQuery.matches
+        ? "dark"
+        : "light";
     } else {
       document.documentElement.dataset.theme = theme;
     }
@@ -102,12 +126,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (theme === "dark")
         toggleIcon.src = "/Media/img/LightDarkIcons/DarkToggle.png";
-
       else if (theme === "light")
         toggleIcon.src = "/Media/img/LightDarkIcons/LightToggle.png";
-
-      else
-        toggleIcon.src = "/Media/img/LightDarkIcons/DefaultToggle.png";
+      else toggleIcon.src = "/Media/img/LightDarkIcons/DefaultToggle.png";
     }
 
     function cycleTheme() {
@@ -130,32 +151,32 @@ document.addEventListener("DOMContentLoaded", () => {
     toggleBtn?.addEventListener("click", cycleTheme);
   }
 
-    /* -------------------- GitHub Icon Theme Handling -------------------- */
-    function initGitHubIcon() {
-      const icon = document.getElementById("github-icon");
-      if (!icon) return;
+  /* -------------------- GitHub Icon Theme Handling -------------------- */
+  function initGitHubIcon() {
+    const icon = document.getElementById("github-icon");
+    if (!icon) return;
 
-      function updateIcon() {
-        const isDark = document.documentElement.dataset.theme === "dark";
+    function updateIcon() {
+      const isDark = document.documentElement.dataset.theme === "dark";
 
-        icon.src = isDark
-          ? "/Media/img/GitHubLogos/GitHubLogo-White.png"
-          : "/Media/img/GitHubLogos/GitHubLogo.png";
-      }
-
-      updateIcon();
-
-      const observer = new MutationObserver(updateIcon);
-
-      observer.observe(document.documentElement, {
-        attributes: true,
-        attributeFilter: ["data-theme"]
-      });
+      icon.src = isDark
+        ? "/Media/img/GitHubLogos/GitHubLogo-White.png"
+        : "/Media/img/GitHubLogos/GitHubLogo.png";
     }
 
-// add thing to change all icons/logos to their dark and light mode 
+    updateIcon();
 
-/* -------------------- Auto Footer -------------------- */
+    const observer = new MutationObserver(updateIcon);
+
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["data-theme"],
+    });
+  }
+
+  // add thing to change all icons/logos to their dark and light mode
+
+  /* -------------------- Auto Footer -------------------- */
   function injectAutoFooter() {
     if (main.querySelector("footer")) return;
 
@@ -179,38 +200,41 @@ document.addEventListener("DOMContentLoaded", () => {
 
     async function checkWebsiteUpdate() {
       try {
-        const response = await fetch("https://api.github.com/repos/Ryandakidd777/Braxons-Stuff");
+        const response = await fetch(
+          "https://api.github.com/repos/Ryandakidd777/Braxons-Stuff",
+        );
         if (!response.ok) throw new Error("GitHub API connection failed");
-        
+
         const repoData = await response.json();
-        const currentPushTime = Date.parse(repoData.pushed_at); 
-        
-        const formattedDate = new Date(currentPushTime).toLocaleDateString("en-US", {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric'
-        });
+        const currentPushTime = Date.parse(repoData.pushed_at);
+
+        const formattedDate = new Date(currentPushTime).toLocaleDateString(
+          "en-US",
+          {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          },
+        );
 
         const statusLabel = document.getElementById("last-updated");
         if (!statusLabel) return;
 
         if (initialPushTime === null) {
-            initialPushTime = currentPushTime;
-            statusLabel.innerText = `Last updated: ${formattedDate}`;
-        } 
-        else if (currentPushTime > initialPushTime) {
-            statusLabel.innerHTML = `
+          initialPushTime = currentPushTime;
+          statusLabel.innerText = `Last updated: ${formattedDate}`;
+        } else if (currentPushTime > initialPushTime) {
+          statusLabel.innerHTML = `
                 Last updated: ${formattedDate} <span style="color: #ff4a4a; font-weight: 800; margin-left: 5px;">(Outdated - Please Refresh)</span>
             `;
         }
-        
       } catch (error) {
         console.error("Error tracking repository update status:", error);
       }
     }
 
-    checkWebsiteUpdate(); 
-    setInterval(checkWebsiteUpdate, 5 * 60 * 1000); 
+    checkWebsiteUpdate();
+    setInterval(checkWebsiteUpdate, 5 * 60 * 1000);
   }
 
   injectAutoFooter();
@@ -219,7 +243,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const PLACEHOLDER_IMG = "/Media/img/misc/Placeholder.png";
 
   function handleImageError(img) {
-    if (img.dataset.fallbackApplied) return; 
+    if (img.dataset.fallbackApplied) return;
 
     console.warn(`Missing image detected: ${img.src}`);
     img.dataset.fallbackApplied = "true";
@@ -229,19 +253,19 @@ document.addEventListener("DOMContentLoaded", () => {
     img.src = PLACEHOLDER_IMG;
   }
 
-  document.querySelectorAll("img").forEach(img => {
+  document.querySelectorAll("img").forEach((img) => {
     img.addEventListener("error", () => handleImageError(img));
   });
 
-  const imgObserver = new MutationObserver(mutations => {
-    mutations.forEach(mutation => {
-      mutation.addedNodes.forEach(node => {
+  const imgObserver = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      mutation.addedNodes.forEach((node) => {
         if (node.tagName === "IMG") {
           node.addEventListener("error", () => handleImageError(node));
         }
 
         if (node.querySelectorAll) {
-          node.querySelectorAll("img").forEach(img => {
+          node.querySelectorAll("img").forEach((img) => {
             img.addEventListener("error", () => handleImageError(img));
           });
         }
@@ -252,18 +276,81 @@ document.addEventListener("DOMContentLoaded", () => {
   imgObserver.observe(document.body, { childList: true, subtree: true });
 
   /* -------------------- Console Thingie -------------------- */
-  (function() {
+  (function () {
     const text = "BRAXON'S STUFF";
-    const fonts = ["serif", "sans-serif", "monospace", "cursive", "fantasy", "Arial", "Times New Roman", "Courier New", "Verdana", "Georgia", "Impact", "Comic Sans MS", "Trebuchet MS", "Lucida Sans Unicode", "Palatino Linotype"];
-    const decorations = ["underline", "line-through", "overline", "none", "wavy underline", "dotted line-through", "double overline", "dashed underline", "solid overline"];
-    const borders = ["none", "1px solid", "2px dashed", "3px dotted", "1px double", "4px groove", "2px ridge", "5px inset", "3px outset"];
-    const transforms = ["rotate", "skewX", "skewY", "translateX", "translateY", "scale", "scaleX", "scaleY", "matrix", "perspective"];
-    const filters = ["none", "blur(2px)", "brightness(150%)", "contrast(200%)", "grayscale(100%)", "hue-rotate(90deg)", "invert(100%)", "saturate(200%)", "sepia(100%)", "drop-shadow(4px 4px 2px rgba(0,0,0,0.5))"];
+    const fonts = [
+      "serif",
+      "sans-serif",
+      "monospace",
+      "cursive",
+      "fantasy",
+      "Arial",
+      "Times New Roman",
+      "Courier New",
+      "Verdana",
+      "Georgia",
+      "Impact",
+      "Comic Sans MS",
+      "Trebuchet MS",
+      "Lucida Sans Unicode",
+      "Palatino Linotype",
+    ];
+    const decorations = [
+      "underline",
+      "line-through",
+      "overline",
+      "none",
+      "wavy underline",
+      "dotted line-through",
+      "double overline",
+      "dashed underline",
+      "solid overline",
+    ];
+    const borders = [
+      "none",
+      "1px solid",
+      "2px dashed",
+      "3px dotted",
+      "1px double",
+      "4px groove",
+      "2px ridge",
+      "5px inset",
+      "3px outset",
+    ];
+    const transforms = [
+      "rotate",
+      "skewX",
+      "skewY",
+      "translateX",
+      "translateY",
+      "scale",
+      "scaleX",
+      "scaleY",
+      "matrix",
+      "perspective",
+    ];
+    const filters = [
+      "none",
+      "blur(2px)",
+      "brightness(150%)",
+      "contrast(200%)",
+      "grayscale(100%)",
+      "hue-rotate(90deg)",
+      "invert(100%)",
+      "saturate(200%)",
+      "sepia(100%)",
+      "drop-shadow(4px 4px 2px rgba(0,0,0,0.5))",
+    ];
     const outputParts = [];
     const styleArgs = [];
 
     function randomHexColor() {
-      return '#' + Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0');
+      return (
+        "#" +
+        Math.floor(Math.random() * 16777215)
+          .toString(16)
+          .padStart(6, "0")
+      );
     }
 
     function randomRgba() {
@@ -276,16 +363,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Set to only one line
     for (let i = 0; i < text.length; i++) {
-      const color = randomHexColor(); 
-      const bg = Math.random() < 0.6 ? randomRgba() : "transparent"; 
+      const color = randomHexColor();
+      const bg = Math.random() < 0.6 ? randomRgba() : "transparent";
       const font = fonts[Math.floor(Math.random() * fonts.length)];
       const bold = Math.random() < 0.8 ? "bold" : "normal";
       const italic = Math.random() < 0.7 ? "italic" : "normal";
       const oblique = Math.random() < 0.3 ? "oblique" : "";
-      const decorationStyle = decorations[Math.floor(Math.random() * decorations.length)];
+      const decorationStyle =
+        decorations[Math.floor(Math.random() * decorations.length)];
       const decorationColor = randomHexColor();
       const decoration = `text-decoration: ${decorationStyle} ${decorationColor};`;
-      const size = `${Math.floor(Math.random() * 20) + 20}px`; 
+      const size = `${Math.floor(Math.random() * 20) + 20}px`;
       const letterSpacing = `${Math.floor(Math.random() * 20 - 10)}px`;
       const wordSpacing = `${Math.floor(Math.random() * 30 - 15)}px`;
       const shadowX = Math.floor(Math.random() * 20 - 10);
@@ -305,7 +393,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const numTransforms = Math.floor(Math.random() * 3) + 1;
       const transformParts = [];
       for (let t = 0; t < numTransforms; t++) {
-        const choice = transforms[Math.floor(Math.random() * transforms.length)];
+        const choice =
+          transforms[Math.floor(Math.random() * transforms.length)];
         let value;
         if (choice === "rotate") {
           value = Math.floor(Math.random() * 720 - 360);
@@ -338,14 +427,16 @@ document.addEventListener("DOMContentLoaded", () => {
           const m4 = (Math.random() * 2 - 0.5).toFixed(2);
           const m5 = Math.floor(Math.random() * 50 - 25);
           const m6 = Math.floor(Math.random() * 50 - 25);
-          transformParts.push(`matrix(${m1}, ${m2}, ${m3}, ${m4}, ${m5}, ${m6})`);
+          transformParts.push(
+            `matrix(${m1}, ${m2}, ${m3}, ${m4}, ${m5}, ${m6})`,
+          );
         } else if (choice === "perspective") {
           value = Math.floor(Math.random() * 1000 + 100);
           transformParts.push(`perspective(${value}px)`);
         }
       }
       if (transformParts.length > 0) {
-        transform = `transform: ${transformParts.join(' ')}; display:inline-block;`;
+        transform = `transform: ${transformParts.join(" ")}; display:inline-block;`;
       }
 
       const style = `
