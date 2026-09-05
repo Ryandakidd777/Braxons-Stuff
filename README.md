@@ -12,9 +12,9 @@ Here you’ll eventually find cool projects, experiments, and some random stuff.
 
 ## RECENTLY UPDATED
 
-Added the Black Holes Article
+A new Markdown Editor/Viewer (which i tested this markdown with using it)
 
-**Check it out:**  [Braxon's Stuff - Black Holes Article](https://braxonsstuff.com/Pages/Articles/Black-Holes/)
+**Check it out:**  [Braxon's Stuff - Markdown Viewer/Editor](https://braxonsstuff.com/Stuff/Markdown-Reader/)
 
 ---
 
