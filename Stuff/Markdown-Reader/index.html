@@ -4,18 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Welcome to Braxon's Stuff! It's some stuff, by Braxon.">
+    <meta name="description" content="Open, write, and preview Markdown files on Braxon's Stuff.">
     <meta name="theme-color" content="#ffffff">
 
-    <meta property="og:title" content="Braxon's Stuff">
-    <meta property="og:description" content="Welcome to Braxon's Stuff! It's some stuff, by Braxon.">
+    <meta property="og:title" content="Markdown Reader | Braxon's Stuff">
+    <meta property="og:description" content="A simple Markdown reader and editor from Braxon's Stuff.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://braxonsstuff.com/">
+    <meta property="og:url" content="https://braxonsstuff.com/Stuff/Markdown-Reader/">
     <meta property="og:image" content="https://braxonsstuff.com/Media/img/Braxon'sStuffLogo-128x128.png">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Braxon's Stuff">
-    <meta name="twitter:description" content="Welcome to Braxon's Stuff! It's some stuff, by Braxon.">
+    <meta name="twitter:title" content="Markdown Reader | Braxon's Stuff">
+    <meta name="twitter:description" content="A simple Markdown reader and editor from Braxon's Stuff.">
     <meta name="twitter:image" content="https://braxonsstuff.com/Media/img/Braxon'sStuffLogo-128x128.png">
 
     <title>Markdown Reader</title>
@@ -28,35 +28,135 @@
 </head>
 <body>
 <noscript>
-  <div class="noscript-banner">
-    ⚠ JavaScript is disabled. Some features of this website may not work correctly.
-    Learn how to enable JavaScript here:
-    <a href="https://support.google.com/adsense/answer/12654?hl=en" target="_blank" rel="noopener">
-      Enable JavaScript Instructions
-    </a>
-  </div>
+    <div class="noscript-banner">
+        ⚠ JavaScript is disabled. The Markdown Reader needs JavaScript to open and preview files.
+        <a href="https://support.google.com/adsense/answer/12654?hl=en" target="_blank" rel="noopener">
+            Enable JavaScript Instructions
+        </a>
+    </div>
 </noscript>
+
 <div class="main">
     <div id="page-title">
         <header>Markdown Reader</header>
     </div>
 
-    <section id="Reader">
-        <div class="reader-toolbar">
-            <span class="reader-filename" id="reader-filename">untitled.md</span>
-            <div class="reader-actions">
-                <button id="reader-edit-btn" type="button">Edit</button>
-                <button id="reader-clear-btn" type="button">Clear</button>
+    <section id="Reader" aria-label="Markdown reader and editor">
+        <div class="reader-app" id="reader-app">
+            <input
+                id="markdown-file-input"
+                type="file"
+                accept=".md,.markdown,.mdown,.mkd,.txt,text/markdown,text/plain"
+                hidden
+            >
+
+            <div class="reader-toolbar" role="toolbar" aria-label="Document controls">
+                <span class="reader-filename" id="reader-filename">untitled.md</span>
+
+                <div class="reader-actions">
+                    <button id="open-file-button" type="button">Open</button>
+                    <button id="clear-button" type="button">Clear</button>
+                </div>
+            </div>
+
+            <div class="reader-format-bar" role="toolbar" aria-label="Markdown formatting">
+                <button
+                    type="button"
+                    data-format="heading"
+                    title="Heading level 2"
+                    aria-label="Heading level 2"
+                >H2</button>
+
+                <span class="reader-format-divider" aria-hidden="true"></span>
+
+                <button
+                    type="button"
+                    data-format="bold"
+                    title="Bold"
+                    aria-label="Bold"
+                ><strong>B</strong></button>
+
+                <button
+                    type="button"
+                    data-format="italic"
+                    title="Italic"
+                    aria-label="Italic"
+                ><em>I</em></button>
+
+                <button
+                    type="button"
+                    data-format="strike"
+                    title="Strikethrough"
+                    aria-label="Strikethrough"
+                ><s>S</s></button>
+
+                <button
+                    type="button"
+                    data-format="code"
+                    title="Inline or fenced code"
+                    aria-label="Code"
+                >&lt;/&gt;</button>
+
+                <span class="reader-format-divider" aria-hidden="true"></span>
+
+                <button type="button" data-format="bullet" title="Bullet list">
+                    • List
+                </button>
+
+                <button type="button" data-format="number" title="Numbered list">
+                    1. List
+                </button>
+
+                <button type="button" data-format="task" title="Task list">
+                    ☑ Task
+                </button>
+
+                <button type="button" data-format="quote" title="Block quote">
+                    › Quote
+                </button>
+
+                <span class="reader-format-divider" aria-hidden="true"></span>
+
+                <button type="button" data-format="link" title="Insert link">
+                    Link
+                </button>
+
+                <button type="button" data-format="image" title="Insert image">
+                    Image
+                </button>
+
+                <button type="button" data-format="table" title="Insert table">
+                    Table
+                </button>
+
+                <button type="button" data-format="rule" title="Insert horizontal rule">
+                    Rule
+                </button>
+            </div>
+
+            <div class="reader-workspace">
+                <section class="reader-pane reader-editor-pane" aria-label="Markdown editor">
+                    <span class="reader-pane-label">Markdown</span>
+
+                    <textarea
+                        id="markdown-input"
+                        spellcheck="true"
+                        aria-label="Markdown source"
+                        placeholder="# Start writing here, open a file, or drop one onto the reader..."
+                    ></textarea>
+                </section>
+
+                <section class="reader-pane reader-preview-pane" aria-label="Markdown preview">
+                    <span class="reader-pane-label">Preview</span>
+
+                    <article id="markdown-output" aria-live="polite"></article>
+                </section>
+            </div>
+
+            <div class="reader-drop-overlay" aria-hidden="true">
+                <strong>Drop a Markdown file here</strong>
             </div>
         </div>
-
-        <div id="reader-pane">
-            <p id="reader-placeholder">Drop a markdown file here, or click Edit to paste text</p>
-            <textarea id="reader-input" spellcheck="false"></textarea>
-            <article id="reader-output"></article>
-        </div>
-
-        <input type="file" id="reader-file-input" accept=".md,.markdown,.txt">
     </section>
 </div>
 </body>
