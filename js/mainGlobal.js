@@ -180,11 +180,15 @@ document.addEventListener("DOMContentLoaded", () => {
   function injectAutoFooter() {
     if (main.querySelector("footer")) return;
 
+    const isHomePage = ["/", "/index.html"].includes(
+      window.location.pathname,
+    );
+
     const footer = document.createElement("footer");
     const year = new Date().getFullYear();
 
     footer.innerHTML = `
-      <p id="last-updated">Checking GitHub for updates...</p>
+      ${isHomePage ? '<p id="last-updated">Checking GitHub for updates...</p>' : ""}
       <p>&copy; ${year} Braxon's Stuff. All rights reserved.</p>
     `;
 
@@ -195,6 +199,8 @@ document.addEventListener("DOMContentLoaded", () => {
     footer.style.opacity = "0.7";
 
     main.appendChild(footer);
+
+    if (!isHomePage) return;
 
     let initialPushTime = null;
 
