@@ -176,6 +176,60 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // add thing to change all icons/logos to their dark and light mode
 
+  /* -------------------- Braxon's Stuff Logo Theme Handling -------------------- */
+  function initBraxonsStuffLogo() {
+    function updateLogo() {
+      const logo = document.getElementById("braxons-stuff-logo");
+      if (!logo) return false;
+
+      const isDark = document.documentElement.dataset.theme === "dark";
+
+      /*
+        Light theme = dark logo
+        Dark theme  = white/light logo
+      */
+      logo.src = isDark
+        ? "/Media/img/Braxon'sStuffLogo-Light.png"
+        : "/Media/img/Braxon'sStuffLogo-Dark.png";
+
+      return true;
+    }
+
+    /*
+      The header is loaded asynchronously by headerLoader.js,
+      so the logo may not exist when mainGlobal.js first runs.
+    */
+
+    // Try immediately.
+    if (updateLogo()) {
+      // Logo already exists.
+    } else {
+      // Wait for headerLoader.js to insert it.
+      const headerObserver = new MutationObserver(() => {
+        if (updateLogo()) {
+          headerObserver.disconnect();
+        }
+      });
+
+      headerObserver.observe(document.body, {
+        childList: true,
+        subtree: true,
+      });
+    }
+
+    // Keep the logo synchronized with theme changes.
+    const themeObserver = new MutationObserver(() => {
+      updateLogo();
+    });
+
+    themeObserver.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["data-theme"],
+    });
+  }
+
+  initBraxonsStuffLogo();
+
   /* -------------------- Auto Footer -------------------- */
   function injectAutoFooter() {
     if (main.querySelector("footer")) return;

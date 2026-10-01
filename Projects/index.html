@@ -1,0 +1,143 @@
+<!--Copyright © 2026 Braxon's Stuff. All rights reserved.-->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta
+      name="description"
+      content="Projects made, maintained, or contributed to by Braxon."
+    />
+    <meta name="theme-color" content="#ffffff" />
+
+    <meta property="og:title" content="Projects | Braxon's Stuff" />
+    <meta
+      property="og:description"
+      content="Projects made, maintained, or contributed to by Braxon."
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://braxonsstuff.com/Projects/"
+    />
+    <meta
+      property="og:image"
+      content="https://braxonsstuff.com/Media/img/Braxon'sStuffLogo-128x128.png"
+    />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Projects | Braxon's Stuff" />
+    <meta
+      name="twitter:description"
+      content="Projects made, maintained, or contributed to by Braxon."
+    />
+    <meta
+      name="twitter:image"
+      content="https://braxonsstuff.com/Media/img/Braxon'sStuffLogo-128x128.png"
+    />
+
+    <title>Projects | Braxon's Stuff</title>
+
+    <link
+      rel="icon"
+      href="/Media/img/Braxon'sStuffLogo-Favicon.svg"
+    />
+
+    <link rel="stylesheet" href="/css/mainGlobal.css" />
+    <link rel="stylesheet" href="/css/projectPage.css" />
+
+    <script src="/js/mainGlobal.js" defer></script>
+    <script src="/js/headerLoader.js" defer></script>
+    <script src="/js/projects.js" defer></script>
+  </head>
+
+  <body>
+    <noscript>
+      <div class="noscript-banner">
+        ⚠ JavaScript is disabled. Some features may not work correctly.
+      </div>
+    </noscript>
+
+    <main class="main">
+      <header id="page-title">
+        <header>Projects</header>
+
+        <p id="description">
+          Things I've made, worked on, experimented with, or contributed to.
+        </p>
+      </header>
+
+      <section id="Section">
+        <h2>
+          <a href="/">Return Home</a>
+        </h2>
+
+        <div class="projects-controls">
+          <div class="projects-search">
+            <label class="sr-only" for="project-search">
+              Search projects
+            </label>
+
+            <input
+              id="project-search"
+              type="search"
+              placeholder="Search projects..."
+              autocomplete="off"
+            />
+          </div>
+
+          <div class="status-filter-area">
+            <div
+              class="projects-filters"
+              id="projects-filters"
+              role="group"
+              aria-label="Project status filters"
+            ></div>
+          </div>
+
+          <div class="tag-search-area">
+            <label class="sr-only" for="project-tag-search">
+              Search by tag
+            </label>
+
+            <input
+              id="project-tag-search"
+              type="search"
+              placeholder="Search by tag..."
+              autocomplete="off"
+            />
+
+            <div
+              class="tag-search-results"
+              id="project-tag-options"
+              hidden
+            ></div>
+          </div>
+        </div>
+
+        <div
+          class="projects_container"
+          id="projects-container"
+          aria-live="polite"
+        ></div>
+
+        <p
+          class="projects-empty"
+          id="projects-empty"
+          hidden
+        >
+          No projects match your search.
+        </p>
+
+        <p
+          class="projects-error"
+          id="projects-error"
+          hidden
+        >
+          Projects could not be loaded.
+        </p>
+      </section>
+    </main>
+  </body>
+</html>

@@ -12,9 +12,10 @@ Here you’ll eventually find cool projects, experiments, and some random stuff.
 
 ## RECENTLY UPDATED
 
-A new Markdown Editor/Viewer (which i tested this markdown with using it)
+A shiny, brand new Projects Page,
+Also moved Braxon's Sticky Notes page from Stuff to Projects
 
-**Check it out:**  [Braxon's Stuff - Markdown Viewer/Editor](https://braxonsstuff.com/Stuff/Markdown-Reader/)
+**Check it out:**  [Braxon's Stuff - Markdown Viewer/Editor](https://braxonsstuff.com/Projects/)
 
 ---
 

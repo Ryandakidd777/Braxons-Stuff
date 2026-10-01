@@ -1,0 +1,78 @@
+{
+  "settings": {
+    "title": "Projects",
+    "description": "Things I've made, worked on, experimented with, or contributed to.",
+    "searchEnabled": true,
+    "statusFiltersEnabled": true,
+    "tagSearchEnabled": true
+  },
+
+  "statuses": {
+    "not-started": {
+      "label": "Not Started",
+      "icon": "dot"
+    },
+    "wip": {
+      "label": "In Progress",
+      "icon": "spinner"
+    },
+    "success": {
+      "label": "Complete",
+      "icon": "check"
+    }
+  },
+
+  "availableTags": [
+    {
+      "id": "javascript",
+      "label": "JavaScript"
+    },
+    {
+      "id": "html",
+      "label": "HTML"
+    },
+    {
+      "id": "css",
+      "label": "CSS"
+    },
+    {
+      "id": "website",
+      "label": "Website"
+    },
+    {
+      "id": "tool",
+      "label": "Tool"
+    },
+    {
+      "id": "game",
+      "label": "Game"
+    },
+    {
+      "id": "extension",
+      "label": "Browser Extension"
+    },
+    {
+      "id": "experiment",
+      "label": "Experiment"
+    }
+  ],
+
+  "projects": [
+  {
+    "id": "braxons-sticky-notes-extension",
+    "title": "Braxon's Sticky Notes Extension",
+    "description": "A simple sticky-notes extension for your browser — quick notes right in your toolbar, no tabs, no accounts, no cloud.",
+    "status": "Complete",
+    "image": "/Media/img/BraxonsStickyNotes/StickyNotesExtensionIcon@500x.png",
+    "imageAlt": "My Project preview",
+    "link": "/Projects/Braxons-Sticky-Notes",
+    "linkText": "View Project",
+    "tags": [
+      "extension",
+      "html",
+      "css",
+      "javascript"
+    ]
+  }
+]
+}

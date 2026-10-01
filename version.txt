@@ -1,8 +1,9 @@
 Version:Alpha
 Created:January/24/2026 EST
-Last Updated:9/05/2026 EST
+Last Updated:10/01/2026 EST
 
-Updated - Copyright stuff
+Updated - Lots of stuff, Added theme changing on website logo in header, added projects page,
+Also moved Braxon's Sticky Notes page from Stuff to Projects
 
 Things to do:
 Go through all pages, and files, and **FINISH** them. Use "<!--Needs Finished-->" at top of html
