@@ -1,5 +1,4 @@
 /*Copyright © 2026 Braxon's Stuff. All rights reserved.*/
-/* Only Markdown Reader layout and rendered-Markdown styles live here. */
 
 #Reader {
     width: min(1100px, calc(100% - 32px));
