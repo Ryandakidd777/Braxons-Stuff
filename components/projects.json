@@ -44,10 +44,6 @@
       "label": "Tool"
     },
     {
-      "id": "game",
-      "label": "Game"
-    },
-    {
       "id": "extension",
       "label": "Browser Extension"
     },
@@ -71,7 +67,8 @@
       "extension",
       "html",
       "css",
-      "javascript"
+      "javascript",
+      "tool"
     ]
   }
 ]
