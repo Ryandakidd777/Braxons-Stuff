@@ -17,6 +17,10 @@ Also moved Braxon's Sticky Notes page from Stuff to Projects
 
 **Check it out:**  [Braxon's Stuff - Projects Page](https://braxonsstuff.com/Projects/)
 
+Finished About Me
+
+**Check it out:**  [Braxon's Stuff - About Me Page](https://braxonsstuff.com/Pages/About-Me)
+
 ---
 
 ![Braxon's Stuff Logo](https://braxonsstuff.com/Media/img/Braxon'sStuffLogo-128x128.png)

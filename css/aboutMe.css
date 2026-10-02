@@ -1,0 +1,89 @@
+/* Copyright © 2026 Braxon's Stuff. All rights reserved. */
+
+#description.about-intro,
+.about-body {
+    width: min(100% - 2rem, 55rem);
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+
+#description.about-intro p {
+    margin: 0 0 1.1rem;
+    line-height: 1.7;
+}
+
+#description.about-intro p.about-lead {
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.about-body {
+    margin-top: 2rem;
+    padding-bottom: 3rem;
+}
+
+.about-section {
+    margin-top: 2.5rem;
+}
+
+.about-heading {
+    margin: 0 0 1rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.about-list {
+    margin: 0;
+}
+
+.about-row {
+    display: grid;
+    grid-template-columns: 7rem 1fr;
+    gap: 1rem;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.about-row:last-child {
+    border-bottom: none;
+}
+
+.about-row dt {
+    font-weight: 700;
+}
+
+.about-row dd {
+    margin: 0;
+    line-height: 1.6;
+}
+
+.about-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.about-tags li {
+    padding: 0.35rem 0.7rem;
+    border: 1px solid var(--border-color);
+    border-radius: 3px;
+}
+
+@media (max-width: 600px) {
+    #description.about-intro,
+    .about-body {
+        width: min(100% - 2rem, 55rem);
+    }
+
+    .about-row {
+        grid-template-columns: 1fr;
+        gap: 0.2rem;
+    }
+}
