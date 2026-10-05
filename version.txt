@@ -1,8 +1,8 @@
 Version:Alpha
 Created:January/24/2026 EST
-Last Updated:10/02/2026 EST
+Last Updated:10/05/2026 EST
 
-Updated - Remove Update Logs, finish About Me
+Updated - GitHub Page Archives added
 
 Things to do:
 

@@ -12,14 +12,13 @@ Here you’ll eventually find cool projects, experiments, and some random stuff.
 
 ## RECENTLY UPDATED
 
-A shiny, brand new Projects Page,
-Also moved Braxon's Sticky Notes page from Stuff to Projects
-
-**Check it out:**  [Braxon's Stuff - Projects Page](https://braxonsstuff.com/Projects/)
-
 Finished About Me
 
 **Check it out:**  [Braxon's Stuff - About Me Page](https://braxonsstuff.com/Pages/About-Me)
+
+GitHub Page Archives
+
+**Check it out:**  [Braxon's Stuff - GitHub Page Archives](https://braxonsstuff.com/Stuff/GitHub-Archives)
 
 ---
 

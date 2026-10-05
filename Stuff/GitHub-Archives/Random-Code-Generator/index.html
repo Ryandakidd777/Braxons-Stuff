@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Welcome to Braxon's Stuff! It's some stuff, by Braxon.">
+    <meta name="theme-color" content="#ffffff">
+
+    <meta property="og:title" content="Braxon's Stuff">
+    <meta property="og:description" content="Welcome to Braxon's Stuff! It's some stuff, by Braxon.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://braxonsstuff.com/">
+    <meta property="og:image" content="https://braxonsstuff.com/Media/img/Braxon'sStuffLogo-128x128.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Braxon's Stuff">
+    <meta name="twitter:description" content="Welcome to Braxon's Stuff! It's some stuff, by Braxon.">
+    <meta name="twitter:image" content="https://braxonsstuff.com/Media/img/Braxon'sStuffLogo-128x128.png">
+
+    <title>Random Code Generator</title>
+    <link rel="icon" href="/Media/img/Braxon'sStuffLogo-Favicon.svg">
+    <link rel="stylesheet" href="/css/mainGlobal.css">
+    <script src="/js/headerLoader.js" defer></script>
+<style>
+  :root{
+    --bg:#0f1724; --card:#0b1220; --accent:#60a5fa; --muted:#94a3b8;
+    --glass: rgba(255,255,255,0.03);
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color:#e6eef8;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:flex-start;
+    min-height:100vh;
+    padding:30px;
+  }
+  h1{margin-bottom:20px; text-align:center;}
+  
+  .wrap{
+    width:600px;
+    max-width:95vw;
+    background: var(--card);
+    border-radius:14px;
+    padding:20px;
+    box-shadow: 0 6px 30px rgba(2,6,23,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
+    border:1px solid rgba(255,255,255,0.03);
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+    position:relative;
+  }
+
+  .controls{
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  input[type=number]{
+    width:80px;
+    padding:6px 10px;
+    border-radius:8px;
+    border:1px solid rgba(255,255,255,0.05);
+    background:transparent;
+    color:inherit;
+  }
+  button{
+    padding:8px 14px;
+    border-radius:10px;
+    border:1px solid rgba(255,255,255,0.05);
+    background: linear-gradient(90deg, rgba(96,165,250,0.12), rgba(96,165,250,0.08));
+    color:var(--accent);
+    font-weight:600;
+    cursor:pointer;
+    transition: transform .1s ease;
+  }
+  button:hover{ transform:translateY(-2px); }
+
+  .code-display{
+    padding:15px 20px;
+    font-family: monospace;
+    font-size:20px;
+    border-radius:12px;
+    background: var(--glass);
+    border:1px solid rgba(255,255,255,0.03);
+    text-align:center;
+    cursor:pointer;
+    user-select: all;
+    min-width:480px;
+    word-break: break-word;
+  }
+
+  .history-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+  }
+  .history{
+    background: var(--glass);
+    border:1px solid rgba(255,255,255,0.03);
+    border-radius:12px;
+    max-height:250px;
+    overflow-y:auto;
+    padding:10px;
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+  }
+  .history-item{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-family: monospace;
+    font-size:16px;
+    padding:6px 10px;
+    border-radius:8px;
+    background: rgba(255,255,255,0.01);
+    border:1px solid rgba(255,255,255,0.02);
+  }
+  .history-item button{
+    padding:2px 6px;
+    font-size:12px;
+  }
+  .history-item span{cursor:pointer;}
+
+  .version{
+    position:absolute;
+    bottom:10px;
+    right:15px;
+    font-size:11px;
+    color:var(--muted);
+    font-weight:600;
+  }
+</style>
+</head>
+<body>
+
+<h1>
+  <a href="/">Home</a>
+</h1>
+
+<h1>Random Code Generator</h1>
+
+<div class="wrap">
+  <div class="controls">
+    <input type="number" id="length" value="26" min="1" max="999999999999">
+    <button id="generate">Generate</button>
+  </div>
+
+  <div class="code-display" id="code">Click Generate</div>
+  <p style="color:var(--muted); font-size:13px; text-align:center;">Click the code to copy it</p>
+
+  <div class="history-header">
+    <h2 style="margin:0;font-size:16px;">History</h2>
+    <button id="clearHistory" style="padding:4px 8px;font-size:12px;">Clear History</button>
+  </div>
+
+  <div class="history" id="history">
+    <div style="text-align:center; color:var(--muted);">No codes yet</div>
+  </div>
+
+</div>
+
+<script>
+  const CHARSET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()-_=+[]{}|;:,.<>?/`~';
+  const codeEl = document.getElementById('code');
+  const generateBtn = document.getElementById('generate');
+  const lengthInput = document.getElementById('length');
+  const historyEl = document.getElementById('history');
+  const clearBtn = document.getElementById('clearHistory');
+
+  let history = [];
+
+  function secureRandomIndex(max){
+    const out = new Uint32Array(1);
+    crypto.getRandomValues(out);
+    return out[0] % max;
+  }
+
+  function generateCode(len){
+    let code = '';
+    for(let i=0;i<len;i++){
+      code += CHARSET[secureRandomIndex(CHARSET.length)];
+    }
+    return code;
+  }
+
+  function renderHistory(){
+    historyEl.innerHTML = '';
+    if(history.length === 0){
+      historyEl.innerHTML = '<div style="text-align:center; color:var(--muted);">No codes yet</div>';
+      return;
+    }
+    history.forEach((item, idx)=>{
+      const div = document.createElement('div');
+      div.className='history-item';
+      const span = document.createElement('span');
+      span.textContent = item;
+      span.addEventListener('click', ()=>{
+        navigator.clipboard.writeText(item);
+        div.style.background='rgba(96,165,250,0.1)';
+        setTimeout(()=>div.style.background='',400);
+      });
+      const removeBtn = document.createElement('button');
+      removeBtn.textContent='Remove';
+      removeBtn.addEventListener('click', ()=>{
+        history.splice(idx,1);
+        renderHistory();
+      });
+      div.appendChild(span);
+      div.appendChild(removeBtn);
+      historyEl.appendChild(div);
+    });
+  }
+
+  generateBtn.addEventListener('click', ()=>{
+    const len = Number(lengthInput.value)||26;
+    const code = generateCode(len);
+    codeEl.textContent = code;
+    history.unshift(code);
+    renderHistory();
+  });
+
+  codeEl.addEventListener('click', ()=>{
+    const text = codeEl.textContent;
+    if(text && text !== 'Click Generate'){
+      navigator.clipboard.writeText(text).then(()=>{
+        codeEl.style.boxShadow='0 0 0 4px rgba(96,165,250,0.2)';
+        setTimeout(()=>codeEl.style.boxShadow='',500);
+      });
+    }
+  });
+
+  clearBtn.addEventListener('click', ()=>{
+    if(confirm('Are you sure you want to clear history?')){
+      history=[];
+      renderHistory();
+    }
+  });
+</script>
+
+</body>
+</html>
