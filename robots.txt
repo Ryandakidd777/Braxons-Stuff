@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://braxonsstuff.com/sitemap.xml
